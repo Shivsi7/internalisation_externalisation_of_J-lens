@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jspace-cot"
+version = "0.1.0"
+description = "J-space ablation vs. external chain of thought across problem difficulty (Qwen3-4B)"
+requires-python = ">=3.10"
+
+dependencies = [
+    # Anthropic's reference Jacobian-lens implementation, pinned to the exact
+    # commit used for every result in the report. Upstream is explicitly
+    # unmaintained ("Not maintained and not accepting contributions"), so the
+    # pin is load-bearing, not hygiene. If the repo ever disappears, vendor it
+    # under third_party/jlens/ — it is Apache-2.0 and ~1700 lines.
+    "jlens @ git+https://github.com/anthropics/jacobian-lens@581d398613e5602a5af361e1c34d3a92ea82ba8e",
+
+    "torch",
+    "transformers>=5.5",
+    "huggingface_hub",
+    "numpy",
+
+    # evaluation
+    "datasets",
+    "math-verify",
+    "sympy",
+    "pandas",
+    "scipy",
+
+    # figures
+    "matplotlib",
+    "pyyaml",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff", "jupyter"]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"

@@ -1,0 +1,27 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+
+# Model weights and fitted lenses — fetched at run time, never committed.
+# The Qwen3-4B lens is ~458 MB; scripts/fetch_lens.py pulls it from the Hub.
+lenses/
+*.pt
+*.safetensors
+hf-cache/
+
+# Raw generations can be large; keep the scored CSVs that figures are built
+# from, and gzip the jsonl. See results/README.md for what is tracked.
+results/**/*.jsonl
+!results/**/*.jsonl.gz
+
+.DS_Store
+.env
+
+# Local reference copy of the paper text (not ours to redistribute).
+# Read it at https://transformer-circuits.pub/2026/workspace/index.html
+paper.md
