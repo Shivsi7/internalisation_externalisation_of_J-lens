@@ -1,0 +1,17 @@
+{
+  "tag": "smoke_direct_clean",
+  "accuracy": 0.375,
+  "n_correct": 3,
+  "n": 8,
+  "wilson95": [
+    0.13684175946152105,
+    0.6942621454161981
+  ],
+  "mean_new_tokens": 5.375,
+  "stop_reasons": {
+    "eos": 8,
+    "length": 0
+  },
+  "wall_seconds": 0.6010758876800537,
+  "ablation_stats": null
+}
