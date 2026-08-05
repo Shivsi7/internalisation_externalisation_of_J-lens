@@ -30,6 +30,7 @@ and only indirectly.
 | Commitment | Assertion | Paper's evidence | Rung |
 |---|---|---|---|
 | **Correspondence** | It is the *same content* in both places | none | 1 |
+| **Exchange** | Externalizing *frees* the workspace, rather than merely copying it | none | 1.5 |
 | **Substitution** | Each can carry the load; they trade off | indirect | 2 |
 | **Compensation** | The model *shifts* content to the page when the workspace is damaged | none | 3 |
 | **Causal role** | The correspondence is functional, not epiphenomenal | none | 4 |
@@ -94,6 +95,91 @@ where it first surfaces. Much harder to produce by chance than presence alone.
 | **Neg** | **Problem-shuffled: problem *p*'s intermediates vs problem *q*'s readout** | **the key null** — holds value distribution and readout statistics fixed, breaks only the causal link |
 | Neg | Matched decoys: wrong combinations of the same operands | controls for "plausible numbers are common" |
 | Neg | Readout from outside the workspace band | band-specificity |
+
+---
+
+## 2b. Rung 1.5 — Exchange, duplication, or neither
+
+Rung 1 is a **presence test**, and presence in both places is equally consistent with offloading,
+duplication, and coincidence. This rung supplies the missing discrimination.
+
+### 2b.1 The measure: occupancy, not presence
+
+A graded quantity — *how much* of value `v` is in the workspace at this position — rather than a
+binary. Use the projection coefficient:
+
+```
+occ(v, ℓ, t) = < h_{ℓ,t} , ĵ_v >        ĵ_v = J_ℓᵀ W_U[v] / ||J_ℓᵀ W_U[v]||
+```
+
+Report as a **z-score against the decoy distribution at the same (ℓ, t)**, which absorbs position
+effects and the "small integers are common" problem.
+
+Why this rather than rank: **it is the same quantity the ablation zeroes.** We measure the
+projection onto `ĵ_v`; the intervention removes the projection onto `ĵ_v`. Measurement and
+manipulation are commensurate, so "how much was held" and "how much was removed" live on one
+scale. Keep the rank-based measure as a robustness check, since top-k selection is what the
+ablation actually uses.
+
+### 2b.2 Four relationships, not two
+
+| | Relationship | Workspace capacity | CoT's role | Ruled out by |
+|---|---|---|---|---|
+| 1 | **Exchange / offload** | freed by writing | genuine substitute | — |
+| 2 | **Duplication** | unchanged | redundant backup | maintenance signature (2b.3) |
+| 3 | **Complementary** | holds *different* content | division of labour | rung 1 (correspondence) |
+| 4 | **Epiphenomenal** | unchanged | compute/conditioning, not storage | filler control (rung 2) |
+
+"Interchangeable scratchpads" asserts (1). The paper's robustness differential is consistent with
+all four. Rung 1 separates (3) from (1)+(2); the filler control addresses (4); **this rung
+separates (1) from (2)**.
+
+### 2b.3 The maintenance signature — the discriminating test
+
+Track occupancy of `v` across the interval between when it is **computed** and when it is **next
+needed**. Construct problems where `v` is computed at step *i* and re-used at step *i+d*.
+
+In **direct** mode the model has nowhere else to put `v`, so it must hold it continuously across
+the gap. In **CoT** mode `v` is on the page at step *i* and can be re-read at *i+d*, so it need
+not be held in between.
+
+- **Offload → a dip.** Occupancy falls through the interval, then spikes on re-read.
+- **Duplication → sustained.** Occupancy stays elevated across the whole gap.
+
+The interval is the right window precisely *because* the model is not attending to the written
+token there. After `v` is written, elevated occupancy could merely mean "reading the page"; inside
+the gap there is no reason to be reading it. This is what defuses the re-ingestion confound.
+
+**This makes the depth ladder infrastructure rather than a separate question.** `design.md` C3
+synthesises chains with controlled dependency structure, which is exactly what is needed: vary `d`,
+read the occupancy trajectory. It also yields an independent behavioural prediction — if direct
+mode must maintain across the gap, its accuracy should degrade with `d` while CoT stays flat, and
+ablation should hurt direct disproportionately at large `d`.
+
+| | Control | Tests |
+|---|---|---|
+| Pos | Pre-write occupancy rise for `v` | the measure detects internal holding at all (§3.3 signature) |
+| Pos | Operands present in context | occupancy is non-zero for things definitely represented |
+| Neg | Decoy values, same magnitude, same positions | the trajectory is not a generic artefact of position |
+| Neg | Values from a different problem | as above, with matched value distribution |
+| Neg | Occupancy outside the workspace band | band-specificity of the dip |
+
+### 2b.4 Convergent evidence — dual-task capacity probe
+
+Offloading means capacity is *freed*, so measure capacity directly. Give the model a secondary
+item to hold ("remember the word BANANA") while it solves the problem, then ask for it back.
+
+- **Offload** → CoT frees workspace → secondary recall is **better** under CoT than direct.
+- **Duplication** → nothing freed → recall is unchanged.
+
+Measurable both behaviourally (recall accuracy) and internally (occupancy of `BANANA` during the
+math), which cross-checks the two. The reference repo ships dual-task machinery
+(`data/experiments/dual-task.json`), and the paper's §A.17 result is suggestive: under load,
+*computed* answers fell 95%→72% while *held* concepts barely moved. If CoT relieves computational
+load specifically, that is where it should show.
+
+- Pos: no-math baseline recall (ceiling for the secondary item)
+- Neg: secondary item during a non-reasoning filler task of matched length
 
 ---
 
@@ -226,8 +312,10 @@ Environment note: glibc 2.35 on aion/elm. Standard PyTorch wheels are fine.
 - Headline difficulty axis: cross-dataset (GSM8K → MATH → AIME) is confounded and AIME at n=60
   gives ±10-point CIs; MATH-500 levels 1–5 hold topic/format/answer-type constant and cost nothing
   extra. Leaning toward MATH-500 levels as primary, cross-dataset as supporting.
-- Whether the depth ladder (`design.md` C3, serialisability vs difficulty) survives the budget
-  alongside the four rungs. It is a different question — *what kind* of load CoT can absorb.
+- ~~Whether the depth ladder survives the budget alongside the rungs.~~ **Resolved:** it is now
+  load-bearing infrastructure for rung 1.5, not an optional extra. Only synthetic chains give the
+  controlled dependency distance `d` the maintenance signature needs. It still answers the
+  original serialisability question (`design.md` C3) as a by-product.
 - Exact AIME source and revision hash, required by the spec, still to be recorded in the README.
 
 ---
