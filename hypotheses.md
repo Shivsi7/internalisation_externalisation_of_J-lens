@@ -89,7 +89,7 @@ So the discriminating prediction is about **serialisability, not difficulty**:
 > Protection tracks how serialisable a problem's intermediate state is, and only incidentally
 > tracks how hard the problem is.
 
-This is tested by the synthetic depth ladder (`design.md` §4, condition C3): chains of elementary
+This is tested by the synthetic depth ladder (`design.md` §3, condition C3): chains of elementary
 arithmetic, arbitrarily long. These are *depth-hard and bandwidth-trivial*. H2 predicts they stay
 well protected by CoT no matter how long the chain gets — even at chain lengths where clean
 accuracy has fallen to AIME levels. H1 predicts nothing in particular here. A "difficulty is all
@@ -144,7 +144,7 @@ I expect several to be wrong.
 ## 6. Things I expect to go wrong
 
 - The J-lens readouts on a 4B model may simply not be interpretable. Validation gate in
-  `design.md` §3 must pass before any ablation result is reported as meaningful.
+  `design.md` §4 must pass before any ablation result is reported as meaningful.
 - Ablation is applied at every generated token, so a longer chain of thought receives *more*
   total intervention. Harder problems produce longer chains. That confound points the same way
   as H2 and would fake it. Token-matched conditions are mandatory, not optional.

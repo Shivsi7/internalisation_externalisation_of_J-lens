@@ -112,6 +112,7 @@ of the paper's contrast.
 | B5 | Logit-lens ablation (top-k rows of `W_U`) | method ablation: does the Jacobian correction matter, or would a naive lens do? |
 | B6 | k sweep, k ∈ {1, 3, 10, 30} | the paper never swept k; needed for the contour plot |
 | B7 | **Ablate-on-write only** / **ablate-on-read only** | resolves the §9.3 seam: is CoT damaged in production or in re-ingestion? |
+| B8 | **Exclusion filter on / off** | the filter may itself create the CoT-vs-direct asymmetry — see §6.2(4) |
 
 B3 is the control I would defend hardest. A random direction is a weak null because it is almost
 orthogonal to everything the model is doing; rank-shifted J-vectors are drawn from the same
@@ -311,6 +312,22 @@ Three underspecified points, each of which becomes a documented decision plus a 
    the k vectors; check sequential projection as a variant.
 3. **No renormalisation is mentioned.** Do not renormalise (matching the paper), since the controls
    are norm-matched *to the ablation's* norm change — renormalising would break that matching.
+4. **The exclusion filter is not neutral between our two arms, and this is a threat to the
+   headline result.** The filter spares any token in the clean pass's top-10 next-token
+   predictions. In **direct** mode the imminent token *is the answer* — the very quantity the
+   ablation is supposed to destroy — so the filter systematically shields the computation's
+   output. In **CoT** mode the spared token is merely the next word of reasoning, and the
+   load-bearing state lives in the chain rather than in the next token. The filter therefore
+   treats the two arms differently by construction, and it could either mask or manufacture the
+   CoT-protection effect depending on which way the asymmetry cuts. The paper never runs this
+   contrast because it never needed the direct arm to be quantitative.
+
+   **This becomes condition B8: run the main grid with the filter on and off.** If the CoT/direct
+   gap is stable across the toggle, the filter is innocent and the result stands. If the gap
+   moves materially, that is a finding *about the paper's own methodology* and should be reported
+   as one — it would mean published J-ablation contrasts between "model says the answer" and
+   "model says reasoning" are partly measuring the filter. Either outcome is worth the compute,
+   which is why B8 sits in the must-run tier and not the stretch tier.
 
 ### 6.3 Generation
 

@@ -16,6 +16,7 @@ Model: `Qwen/Qwen3-4B`. Datasets: GSM8K, MATH-500, AIME 2024+2025.
 | `report.pdf` | The two-page report *(not yet written)* |
 | `hypotheses.md` | **Pre-registration.** Written and committed before any experiment was run. |
 | `design.md` | Experiment design: conditions, controls, metrics, staging, compute plan |
+| `experiments.md` | The executable plan — the four rungs, their metrics, and their nulls |
 | `src/ablation/` | The J-space ablation and ablated-generation hooks — our code |
 | `src/eval/` | Datasets, generation, answer extraction, scoring |
 | `configs/` | One YAML per experimental condition; every run reproducible from a config |
