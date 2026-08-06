@@ -1,0 +1,17 @@
+{
+  "n_programs": 8,
+  "gaps": [
+    2
+  ],
+  "w_parse_rate": 0.625,
+  "w_correct_rate": 0.625,
+  "u_correct_rate": 0.75,
+  "n_analysed": 5,
+  "mean_z_gap_written": -0.4062481070853326,
+  "mean_z_gap_unwritten": -0.3770662107222182,
+  "mean_z_reuse_written": -0.3331008861402681,
+  "mean_z_decoy_written": 0.048489319119235985,
+  "mean_z_decoy_unwritten": -0.10409629451108464,
+  "delta_U_minus_W": 0.029181896363114412,
+  "wall_seconds": 5.45368766784668
+}

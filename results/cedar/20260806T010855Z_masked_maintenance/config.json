@@ -1,0 +1,51 @@
+{
+  "script": "run_masked_maintenance.py",
+  "argv": [
+    "scripts/run_masked_maintenance.py"
+  ],
+  "model": "Qwen/Qwen3-4B",
+  "band": "medium",
+  "band_layers": [
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28
+  ],
+  "conditions": [
+    "baseline",
+    "masked_use",
+    "severed",
+    "page"
+  ],
+  "names": [
+    "x",
+    "y",
+    "z",
+    "k",
+    "m",
+    "p"
+  ],
+  "values": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "n_fillers": 2,
+  "n_items": 96,
+  "demo_value": 3,
+  "decoding": "argmax over digit tokens at final position, no sampling",
+  "git_commit": "2a95375ea1e63a0e3f95d05665062aa60a5bb08a",
+  "host": "cedar",
+  "gpu": "NVIDIA RTX 6000 Ada Generation"
+}

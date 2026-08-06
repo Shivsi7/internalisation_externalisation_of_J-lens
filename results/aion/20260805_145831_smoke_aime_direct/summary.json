@@ -1,0 +1,28 @@
+{
+  "tag": "smoke_aime_direct",
+  "task": "aime",
+  "accuracy": 0.0,
+  "n_correct": 0,
+  "n": 60,
+  "wilson95": [
+    -6.938893903907228e-18,
+    0.06017393047793289
+  ],
+  "by_group": {
+    "2024": {
+      "acc": 0.0,
+      "n": 30
+    },
+    "2025": {
+      "acc": 0.0,
+      "n": 30
+    }
+  },
+  "mean_new_tokens": 17.166666666666668,
+  "stop_reasons": {
+    "eos": 37,
+    "length": 23
+  },
+  "wall_seconds": 7.958977699279785,
+  "ablation_stats": null
+}

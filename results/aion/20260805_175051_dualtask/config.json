@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/home_nfs/shivam/harvard/cs_2881_hw0/harvard-cs2881-hw0/scripts/run_dualtask.py",
+    "--n",
+    "120",
+    "--batch-size",
+    "16"
+  ],
+  "n": 120,
+  "seed": 0,
+  "band": [
+    19,
+    28
+  ],
+  "n_words": 28
+}

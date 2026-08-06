@@ -1,0 +1,40 @@
+{
+  "tag": "smoke_math500",
+  "task": "math500",
+  "accuracy": 0.1,
+  "n_correct": 1,
+  "n": 10,
+  "wilson95": [
+    0.01787574951572113,
+    0.4041563854975721
+  ],
+  "by_group": {
+    "1": {
+      "acc": 0.0,
+      "n": 2
+    },
+    "2": {
+      "acc": 0.5,
+      "n": 2
+    },
+    "3": {
+      "acc": 0.0,
+      "n": 2
+    },
+    "4": {
+      "acc": 0.0,
+      "n": 2
+    },
+    "5": {
+      "acc": 0.0,
+      "n": 2
+    }
+  },
+  "mean_new_tokens": 512.0,
+  "stop_reasons": {
+    "eos": 0,
+    "length": 10
+  },
+  "wall_seconds": 13.187325716018677,
+  "ablation_stats": null
+}

@@ -18,8 +18,13 @@ PROMPTS_DIR = pathlib.Path(__file__).resolve().parents[2] / "prompts"
 _NUM = re.compile(r"-?\$?\d[\d,]*(?:\.\d+)?")
 
 
-def load_gsm8k(n: int | None = None, seed: int = 0):
-    """Test-split problems as [{question, gold}]. Deterministic subsample."""
+def load_gsm8k(n: int | None = None, seed: int = 0, single_digit: bool = False):
+    """Test-split problems as [{question, gold}]. Deterministic subsample.
+
+    single_digit=True keeps only problems whose gold answer is a single
+    digit 1-9 (252 of 1319) — the lens-readable regime on Qwen3's
+    digit-by-digit tokenizer.
+    """
     import random
 
     from datasets import load_dataset
@@ -29,6 +34,9 @@ def load_gsm8k(n: int | None = None, seed: int = 0):
         {"question": ex["question"], "gold": ex["answer"].split("####")[-1].strip()}
         for ex in ds
     ]
+    if single_digit:
+        items = [it for it in items
+                 if it["gold"].isdigit() and 1 <= int(it["gold"]) <= 9]
     if n is not None and n < len(items):
         rng = random.Random(seed)
         items = rng.sample(items, n)

@@ -1,0 +1,17 @@
+{
+  "n_sequences": 64,
+  "seq_len": 512,
+  "light": {
+    "top1_agreement": 0.774566650390625
+  },
+  "medium": {
+    "top1_agreement": 0.70733642578125
+  },
+  "heavy": {
+    "top1_agreement": 0.6253662109375
+  },
+  "random_medium": {
+    "top1_agreement": 0.800018310546875
+  },
+  "wall_seconds": 55.553914308547974
+}

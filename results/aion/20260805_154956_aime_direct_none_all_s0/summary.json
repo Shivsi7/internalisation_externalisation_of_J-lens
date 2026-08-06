@@ -1,0 +1,28 @@
+{
+  "tag": "aime_direct_none_all_s0",
+  "task": "aime",
+  "accuracy": 0.0,
+  "n_correct": 0,
+  "n": 60,
+  "wilson95": [
+    -6.938893903907228e-18,
+    0.06017393047793289
+  ],
+  "by_group": {
+    "2024": {
+      "acc": 0.0,
+      "n": 30
+    },
+    "2025": {
+      "acc": 0.0,
+      "n": 30
+    }
+  },
+  "mean_new_tokens": 14.716666666666667,
+  "stop_reasons": {
+    "eos": 43,
+    "length": 17
+  },
+  "wall_seconds": 6.811504125595093,
+  "ablation_stats": null
+}

@@ -1,0 +1,25 @@
+{
+  "n_programs": 24,
+  "gaps": [
+    2
+  ],
+  "w_parse_rate": 0.9583333333333334,
+  "w_correct_rate": 0.8333333333333334,
+  "u_correct_rate": 0.375,
+  "n_analysed": 7,
+  "mean_z_gap_written": 0.025322335645879244,
+  "mean_z_gap_unwritten": 0.15514771772141103,
+  "mean_z_reuse_written": -0.09454545035010335,
+  "mean_z_decoy_written": -0.1700985773144599,
+  "mean_z_decoy_unwritten": -0.2590604669944774,
+  "delta_U_minus_W": 0.1298253820755318,
+  "extras_mean": {
+    "z_gap_w_max": 1.860983201169542,
+    "z_gap_u_max": 1.5845763513020106,
+    "z_gap_w_decoy_max": 1.8975886835583615,
+    "z_gap_u_decoy_max": 1.4131966693060736,
+    "z_amention_w": -0.14940099428806988,
+    "z_amention_u": 0.08257852280512455
+  },
+  "wall_seconds": 5.85372257232666
+}

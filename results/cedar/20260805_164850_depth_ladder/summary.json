@@ -1,0 +1,50 @@
+{
+  "per_length": {
+    "2": {
+      "n": 30,
+      "direct_acc": 1.0,
+      "surfacing_frac_midband": 0.3333333333333333,
+      "surfacing_frac_anyband": 0.6333333333333333,
+      "mean_max_z_midband": 1.7156536671022573
+    },
+    "3": {
+      "n": 30,
+      "direct_acc": 0.3,
+      "surfacing_frac_midband": 0.13333333333333333,
+      "surfacing_frac_anyband": 0.3,
+      "mean_max_z_midband": 1.223833539088567
+    },
+    "4": {
+      "n": 30,
+      "direct_acc": 0.23333333333333334,
+      "surfacing_frac_midband": 0.16666666666666666,
+      "surfacing_frac_anyband": 0.23333333333333334,
+      "mean_max_z_midband": 1.1033652280767758
+    },
+    "5": {
+      "n": 30,
+      "direct_acc": 0.3,
+      "surfacing_frac_midband": 0.1,
+      "surfacing_frac_anyband": 0.13333333333333333,
+      "mean_max_z_midband": 1.2314778067171575
+    },
+    "6": {
+      "n": 30,
+      "direct_acc": 0.26666666666666666,
+      "surfacing_frac_midband": 0.0,
+      "surfacing_frac_anyband": 0.0,
+      "mean_max_z_midband": 1.0921293079853058
+    },
+    "8": {
+      "n": 30,
+      "direct_acc": 0.1,
+      "surfacing_frac_midband": 0.06666666666666667,
+      "surfacing_frac_anyband": 0.2,
+      "mean_max_z_midband": 1.161140808959802
+    }
+  },
+  "D_midband": null,
+  "D_anyband": 2,
+  "registered_prediction": "D in [3, 7] (hypotheses.md \u00a73)",
+  "wall_seconds": 15.758192300796509
+}

@@ -1,0 +1,50 @@
+{
+  "batteryA": {
+    "n_prompts": 40,
+    "auc_target_vs_none": {
+      "point": 0.60609375,
+      "ci95": [
+        0.52578125,
+        0.68546875
+      ]
+    },
+    "auc_operand_vs_none (positive control)": {
+      "point": 0.5134765625,
+      "ci95": [
+        0.43609375,
+        0.597578125
+      ]
+    },
+    "median_z": {
+      "target": 1.9520100355148315,
+      "operand": 1.8552756309509277,
+      "none": 1.8560525178909302
+    },
+    "ordering_spearman": {
+      "rho": 0.7019139007173377,
+      "p": 1.9171372173964182e-08,
+      "n": 49
+    }
+  },
+  "batteryB_leading_digit": {
+    "n_prompts": 20,
+    "auc_targetlead_vs_none": {
+      "point": 0.4626684636118598,
+      "ci95": [
+        0.3605121293800539,
+        0.5641509433962264
+      ]
+    },
+    "median_z": {
+      "target_lead": 1.9520100355148315,
+      "none": 1.8560560941696167
+    }
+  },
+  "gate_pass": false,
+  "band": [
+    15,
+    32
+  ],
+  "seed": 0,
+  "note": "Qwen3 tokenizes numbers digit-by-digit; battery A uses single-digit intermediates (clean single-token readout), battery B scores only the leading digit of 2-digit values."
+}

@@ -1,0 +1,47 @@
+\begin{tabular}{lrrrrr}
+\toprule
+condition & $n$ & acc & 95\% CI & mean tokens & len-stops \\
+\midrule
+Qwen3-1.7B: gsm8k\_cot\_none\_n200\_s0 & 200 & 0.875 & [0.822, 0.914] & 1254 & 48 \\
+Qwen3-1.7B: gsm8k\_m1.7b\_cot\_medium\_n200\_s0 & 200 & 0.890 & [0.839, 0.926] & 1082 & 23 \\
+Qwen3-1.7B: gsm8k\_m1.7b\_direct\_medium\_n200\_s0 & 200 & 0.050 & [0.027, 0.090] & 26 & 146 \\
+Qwen3-1.7B: gsm8k\_m1.7b\_direct\_none\_n200\_s0 & 200 & 0.115 & [0.078, 0.167] & 9 & 19 \\
+Qwen3-4B: aime\_cot\_medium\_all\_s0 & 60 & 0.183 & [0.106, 0.299] & 4090 & 59 \\
+Qwen3-4B: aime\_cot\_medium\_random\_normmatch\_all\_s0 & 60 & 0.150 & [0.081, 0.261] & 4084 & 58 \\
+Qwen3-4B: aime\_cot\_none\_all\_s0 & 60 & 0.233 & [0.144, 0.354] & 4087 & 59 \\
+Qwen3-4B: aime\_direct\_medium\_all\_s0 & 60 & 0.033 & [0.009, 0.114] & 28 & 48 \\
+Qwen3-4B: aime\_direct\_medium\_random\_normmatch\_all\_s0 & 60 & 0.000 & [-0.000, 0.060] & 22 & 32 \\
+Qwen3-4B: aime\_direct\_none\_all\_s0 & 60 & 0.000 & [-0.000, 0.060] & 15 & 17 \\
+Qwen3-4B: gsm8k\_cot\_heavy\_n200\_s0 & 200 & 0.920 & [0.874, 0.950] & 999 & 37 \\
+Qwen3-4B: gsm8k\_cot\_light\_n200\_s0 & 200 & 0.940 & [0.898, 0.965] & 1094 & 28 \\
+Qwen3-4B: gsm8k\_cot\_medium\_jlens\_rankshift\_n200\_s0 & 200 & 0.930 & [0.886, 0.958] & 1014 & 23 \\
+Qwen3-4B: gsm8k\_cot\_medium\_logitlens\_n200\_s0 & 200 & 0.915 & [0.868, 0.946] & 987 & 23 \\
+Qwen3-4B: gsm8k\_cot\_medium\_n200\_s0 & 200 & 0.920 & [0.874, 0.950] & 994 & 24 \\
+Qwen3-4B: gsm8k\_cot\_medium\_n200\_s1 & 200 & 0.940 & [0.898, 0.965] & 1038 & 27 \\
+Qwen3-4B: gsm8k\_cot\_medium\_nofilter\_n200\_s0 & 200 & 0.955 & [0.917, 0.976] & 935 & 18 \\
+Qwen3-4B: gsm8k\_cot\_medium\_random\_normmatch\_n200\_s0 & 200 & 0.885 & [0.833, 0.922] & 1319 & 52 \\
+Qwen3-4B: gsm8k\_cot\_none\_n200\_s0 & 200 & 0.910 & [0.862, 0.942] & 1176 & 39 \\
+Qwen3-4B: gsm8k\_cot\_none\_n200\_s1 & 200 & 0.930 & [0.886, 0.958] & 1199 & 37 \\
+Qwen3-4B: gsm8k\_direct\_heavy\_n200\_s0 & 200 & 0.155 & [0.111, 0.212] & 18 & 93 \\
+Qwen3-4B: gsm8k\_direct\_light\_n200\_s0 & 200 & 0.100 & [0.066, 0.149] & 22 & 124 \\
+Qwen3-4B: gsm8k\_direct\_medium\_jlens\_rankshift\_n200\_s0 & 200 & 0.185 & [0.137, 0.245] & 8 & 24 \\
+Qwen3-4B: gsm8k\_direct\_medium\_logitlens\_n200\_s0 & 200 & 0.175 & [0.129, 0.234] & 7 & 17 \\
+Qwen3-4B: gsm8k\_direct\_medium\_n200\_s0 & 200 & 0.130 & [0.090, 0.184] & 17 & 86 \\
+Qwen3-4B: gsm8k\_direct\_medium\_n200\_s1 & 200 & 0.180 & [0.133, 0.239] & 17 & 85 \\
+Qwen3-4B: gsm8k\_direct\_medium\_nofilter\_n200\_s0 & 200 & 0.140 & [0.099, 0.195] & 16 & 75 \\
+Qwen3-4B: gsm8k\_direct\_medium\_random\_normmatch\_n200\_s0 & 200 & 0.185 & [0.137, 0.245] & 8 & 17 \\
+Qwen3-4B: gsm8k\_direct\_none\_n200\_s0 & 200 & 0.210 & [0.159, 0.272] & 6 & 2 \\
+Qwen3-4B: gsm8k\_direct\_none\_n200\_s1 & 200 & 0.250 & [0.195, 0.314] & 6 & 2 \\
+Qwen3-4B: gsm8k\_sd\_direct\_none\_all\_s0 & 252 & 0.246 & [0.197, 0.303] & 4 & 0 \\
+Qwen3-4B: math500\_cot\_medium\_n250\_s0 & 243 & 0.679 & [0.618, 0.735] & 2451 & 100 \\
+Qwen3-4B: math500\_cot\_medium\_random\_normmatch\_n250\_s0 & 243 & 0.642 & [0.580, 0.700] & 2693 & 142 \\
+Qwen3-4B: math500\_cot\_none\_n250\_s0 & 243 & 0.650 & [0.588, 0.707] & 2591 & 124 \\
+Qwen3-4B: math500\_direct\_medium\_n250\_s0 & 243 & 0.198 & [0.152, 0.252] & 21 & 125 \\
+Qwen3-4B: math500\_direct\_medium\_random\_normmatch\_n250\_s0 & 243 & 0.185 & [0.141, 0.239] & 14 & 58 \\
+Qwen3-4B: math500\_direct\_none\_n250\_s0 & 243 & 0.239 & [0.189, 0.296] & 10 & 23 \\
+Qwen3-8B: gsm8k\_m8b\_cot\_medium\_n200\_s0 & 200 & 0.915 & [0.868, 0.946] & 1261 & 31 \\
+Qwen3-8B: gsm8k\_m8b\_cot\_none\_n200\_s0 & 200 & 0.895 & [0.845, 0.930] & 1398 & 43 \\
+Qwen3-8B: gsm8k\_m8b\_direct\_medium\_n200\_s0 & 200 & 0.250 & [0.195, 0.314] & 6 & 1 \\
+Qwen3-8B: gsm8k\_m8b\_direct\_none\_n200\_s0 & 200 & 0.240 & [0.186, 0.304] & 6 & 0 \\
+\bottomrule
+\end{tabular}

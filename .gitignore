@@ -14,10 +14,9 @@ lenses/
 *.safetensors
 hf-cache/
 
-# Raw generations can be large; keep the scored CSVs that figures are built
-# from, and gzip the jsonl. See results/README.md for what is tracked.
-results/**/*.jsonl
-!results/**/*.jsonl.gz
+# Raw generations are tracked deliberately (14 MB total): the assignment
+# requires the results needed to reproduce the report to live in the repo.
+# See results/README.md for the per-run layout.
 
 .DS_Store
 .env

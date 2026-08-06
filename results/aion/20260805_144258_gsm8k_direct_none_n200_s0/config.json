@@ -1,0 +1,40 @@
+{
+  "argv": [
+    "/home_nfs/shivam/harvard/cs_2881_hw0/harvard-cs2881-hw0/scripts/run_gsm8k.py",
+    "--n",
+    "200",
+    "--seed",
+    "0",
+    "--batch-size",
+    "16",
+    "--max-new",
+    "32",
+    "--mode",
+    "direct",
+    "--ablation",
+    "none"
+  ],
+  "task": "gsm8k",
+  "mode": "direct",
+  "n": 200,
+  "seed": 0,
+  "sampling": {
+    "temperature": 0.6,
+    "top_k": 20,
+    "top_p": 0.95,
+    "max_new_tokens": 32,
+    "batch_size": 16
+  },
+  "model": "Qwen/Qwen3-4B",
+  "lens_path": null,
+  "ablation": null,
+  "env": {
+    "hostname": "aion",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
+    "torch": "2.11.0+cu128",
+    "python": "3.10.12",
+    "repo_head": "2a95375ea1e63a0e3f95d05665062aa60a5bb08a",
+    "started_utc": "20260805_144258",
+    "transformers": "5.14.1"
+  }
+}
