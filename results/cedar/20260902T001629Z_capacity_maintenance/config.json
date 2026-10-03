@@ -1,0 +1,51 @@
+{
+  "script": "run_capacity_maintenance.py",
+  "argv": [
+    "/home_nfs/shivam/harvard/cs_2881_hw0/harvard-cs2881-hw0/scripts/run_capacity_maintenance.py"
+  ],
+  "model": "Qwen/Qwen3-4B",
+  "band": "medium",
+  "band_layers": [
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28
+  ],
+  "conditions": [
+    "baseline",
+    "masked_use",
+    "severed",
+    "page"
+  ],
+  "names": [
+    "x",
+    "y",
+    "z",
+    "k",
+    "m",
+    "p"
+  ],
+  "values": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "n_fillers": 2,
+  "n_items": 96,
+  "demo_value": 3,
+  "decoding": "argmax over digit tokens at final position, no sampling",
+  "git_commit": "f84f7910f52181b58ecd1ec1a5ffba9033e3c14c",
+  "host": "cedar",
+  "gpu": "NVIDIA GeForce RTX 3090"
+}

@@ -347,3 +347,142 @@ Result: cot z 0.47 / 0.08 / 0.42 (accuracy 100%); direct 0.24 / 0.18 / 0.08
 and re-reading. Duplication rejected; exchange emptied of its premise (no
 holding in either arm for writing to remove). A2.5's reading is now
 supported by four convergent instruments.
+
+## Addendum 5 — 2026-09-02 (overnight): extensions 2 and 3, registered before running
+
+**A5.1 Capacity maintenance (extension 2).** The masked maintenance test
+showed no holding by default; this variant asks whether the model can hold
+on demand. Identical segments and masks, plus an explicit instruction before
+the definition: the value will become invisible and must be memorised.
+Registered readings: masked accuracy well above the severed floor = the
+model can hold a value when instructed (default-vs-capacity dissociation);
+masked accuracy at the floor again = no capacity to hold even under
+instruction, strengthening the storage-lives-in-context conclusion. We also
+read gap occupancy under instruction: if holding happens, it should now be
+visible where the original run measured z ~= 0. No directional bet is
+placed; either outcome is informative.
+
+**A5.2 Task-type balance (extension 3).** Does reliance on the page depend
+on the kind of thinking? Four synthetic suites (arithmetic chains, fact
+recall, transitive ordering, verbal odd-one-out), each run through
+{clean, medium ablation} x {CoT, direct}, n=80 per suite. Metric: retention
+per suite per mode, and the CoT-vs-direct retention gap per suite.
+Registered frame: the report's picture (workspace = short computation, page
+= storage) predicts the ablation gap is largest for suites needing chained
+computation (arithmetic, transitive) and smallest where the answer is a
+single lookup the context already holds (recall, verbal). Recorded as an
+expectation, not a confirmatory bet; n=80 single-seed runs are leads.
+
+## Addendum 6 — 2026-09-02 (pre-dawn): publication-rigour probes, registered before running
+
+**A6.1 Page-masking during own CoT (duplication, causal).** On the model's
+own correct transcripts, mask attention from the final line's positions to
+every written occurrence of the intermediate values (and their +1
+neighbours). Duplication predicts accuracy stays far above the direct-mode
+re-derivation floor (an internal copy exists); the storage-on-page picture
+predicts collapse toward that floor. A random-position mask of equal size
+controls for masking per se.
+
+**A6.2 Occupancy decay curves (exchange, in a regime with signal).** z of
+the first value at token offsets after its computation, written arm vs
+unworked arm, matched delays, re-read positions excluded. Exchange predicts
+a steeper decay in the written arm; matched curves reject exchange rather
+than mooting it.
+
+**A6.3 Workspace inventory during CoT (complementary, descriptive).** Top
+readout tokens at storage-window positions, categorized (digits, operators,
+variable names, current-line tokens, other). No directional bet; the
+hypothesis space for "what else is there" is reported, not tested.
+
+**A6.4 Maintenance robustness sweep.** Masked/severed/page/baseline cells
+across gap lengths (~10/30/60/120 tokens) and content type (digits vs
+single-token colour words). Registered reading: the no-holding result is
+robust if masked stays at the severed floor across all cells.
+
+**A6.5 Filler battery + full-set rescue (epiphenomenal).** Prefix rescue
+rerun on the full n=200 set for none/filler/wrong (own-CoT defined only on
+the clean-solved subset), with filler types: repeated sentence (original),
+shuffled own-CoT tokens, and repeated dots. Registered readings: full-set
+no-prefix cells should reproduce the main grid's direct-mode damage; no
+filler type should rescue the ablated model above its no-prefix cell.
+
+## Addendum 7 — 2026-09-02 (late night): knockout curve and formal verdicts
+
+**A7.1 Context-knockout curve.** The page-masking result (75.9% with literal
+copies hidden) is ambiguous between workspace holding and absorption into
+neighbouring context. This experiment masks, from the final line, a widening
+ladder: L0 nothing, L1 literal value tokens +1 (replication of the original),
+L2 values +-3, L3 values +-6, L4 every generated position before the final
+line (prompt stays visible). Random-position masks of matched size control
+L1-L3. Registered readings: accuracy falling toward the direct floor as the
+neighbourhood widens = context absorption; accuracy surviving L4 = holding
+somewhere outside the transcript, forcing a revision of the storage picture.
+
+**A7.2 Instrument replication.** The CoT correspondence probe reruns at two
+further program seeds. Registered reading: window pattern (write high, post
+near zero, use intermediate) should reproduce within noise.
+
+**A7.3 Formal verdicts.** Analysis only. Each hypothesis gets a stated
+statistic: bootstrap CIs on window contrasts, exclusion bounds for the nulls
+expressed as a fraction of the write-window positive control, Wilson CIs and
+two-proportion tests for the behavioural cells. Verdicts restated against
+these numbers in a single scoreboard table.
+
+## Addendum 8 — 2026-09-03: injection sufficiency for duplication (run before results)
+
+**A8.1.** The duplication verdict has observation (no copy seen) and necessity
+(no functional copy) legs but no sufficiency leg: would an internal copy work
+if one existed? During the masked-maintenance gap we inject the value's
+J-lens direction into the residual stream at the band layers (scales 0.1,
+0.3, 1.0 of the local residual norm), with the definition masked at question
+time as before. Conditions: baseline, masked without injection, severed, and
+masked with correct-value or wrong-value injection at each scale. Registered
+readings: correct-value injection lifting masked accuracy well above the
+floor, and wrong-value injection pulling answers toward the injected digit,
+means an internal copy is usable and the model simply never creates one
+(duplication stays rejected, the channel exists). Floor at every scale means
+the workspace cannot carry even a planted copy across a gap, a stronger
+storage impossibility. Wrong-value specificity is the control that separates
+genuine value transport from generic perturbation.
+
+## Addendum 9 — 2026-09-03: direct-arm correspondence, the I/O-buffer contrast (registered before running)
+
+**A9.1.** The CoT-arm correspondence result (in-use-only occupancy) is
+consistent with two different models of the workspace. Under the I/O-buffer
+model the workspace stores nothing in any mode, values transit only while
+being produced or consumed, and the fade between uses is unconditional. Under
+an exchange-style division of labour the fade is caused by externalisation,
+so with no chain of thought to hold the value the workspace should carry it
+across the gap. The direct-arm probe answers the same programs with no
+generated reasoning and reads the same three windows off the prompt spans
+(write = line-1 span, post = lines 2-3 spans, use = final line and answer
+cue). The contrast statistic is z_post, direct vs CoT (CoT arm measured
+0.10-0.16 across seeds against write 1.16-1.20).
+
+Registered readings. Direct z_post at or near the CoT level, with z_write and
+z_use elevated, means the workspace holds no idle program content in either
+mode, the I/O-buffer model stands, exchange stays dissolved, and the
+between-use storage hiding place for a rich complementarity is closed in this
+probe family. Direct z_post approaching z_write means a genuine mode
+difference, an exchange-style relief effect revives, and the synthesis must
+change. Interpretive limit registered in advance: the defining expression
+stays readable in the direct prompt, so a low direct z_post shows no holding
+while re-reading is possible, the same regime as the maintenance tests, and
+the deconfounded version would add the attention mask over the line-1 span.
+## Addendum 9b — 2026-09-03: amended direct-correspondence design (registered before the v3 runs)
+
+**A9b.1.** The registered A9 design is unmeasurable as stated. At matched
+programs the direct arm sits at the digit floor in both a bare completion
+format (7.5-12.5%) and the depth ladder's proven chat format (7.5-11.3%,
+three seeds each). The reason is the serial budget, computing d = a op c
+directly requires three dependent operations and the ladder measured the
+budget at two, so the floor replicates the ladder rather than indicting the
+format. There is no direct-mode computation to watch on these programs.
+
+**A9b.2.** Amended design, both arms rerun on modified programs whose final
+line is d = a op k with k a literal (one retrieval across the two distractor
+lines plus one operation, inside the budget), with k differing from v1 and d
+differing from v1 so use-window occupancy of v1 cannot be an echo of writing
+k or d. The A9 decision rule carries over unchanged, the contrast statistic
+is z_post, direct vs CoT, with the same registered readings. The failed v2
+runs are preserved as the budget replication they are.

@@ -1,0 +1,351 @@
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[notice] To update, run: python -m pip install --upgrade pip
+[notice] To update, run: python -m pip install --upgrade pip
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+llama3.1-8b-it: /workspace/hw0/lenses/llama3.1-8b-it/llama3.1-8b-it/jlens/Salesforce-wikitext/Llama-3.1-8B-Instruct_jacobian_lens.pt (1040 MB)
+  JacobianLens(d_model=4096, n_prompts=461, source_layers=[0..30] (31 layers))
+  d_model=4096  n_prompts=461
+  source layers 0..30 (31 fitted)
+  naive workspace band (38-92% of 32): 13..29
+  OK: all 17 band layers present (unsloth/Meta-Llama-3.1-8B-Instruct)
+BOOTSTRAP_DONE 04:37:29
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+llama3.1-8b-it: /workspace/hw0/lenses/llama3.1-8b-it/llama3.1-8b-it/jlens/Salesforce-wikitext/Llama-3.1-8B-Instruct_jacobian_lens.pt (1040 MB)
+  JacobianLens(d_model=4096, n_prompts=461, source_layers=[0..30] (31 layers))
+  d_model=4096  n_prompts=461
+  source layers 0..30 (31 fitted)
+  naive workspace band (38-92% of 32): 13..29
+  OK: all 17 band layers present (unsloth/Meta-Llama-3.1-8B-Instruct)
+=== START llama gsm8k --mode cot --ablation none --max-new 2048 04:37:33
+[run] output -> /workspace/hw0/results/b02ffcc7d478/20260902_043737_gsm8k_meta-llama-3.1-8b-instruct_cot_none_n200_s0
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files:  25%|██▌       | 1/4 [00:05<00:16,  5.61s/it]Fetching 4 files:  50%|█████     | 2/4 [00:11<00:11,  5.75s/it]Fetching 4 files:  75%|███████▌  | 3/4 [00:11<00:03,  3.18s/it]Fetching 4 files: 100%|██████████| 4/4 [00:11<00:00,  1.97s/it]Fetching 4 files: 100%|██████████| 4/4 [00:11<00:00,  2.93s/it]
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   0%|          | 1/291 [00:00<01:14,  3.88it/s]Loading weights:   8%|▊         | 22/291 [00:00<00:03, 75.62it/s]Loading weights:  14%|█▎        | 40/291 [00:00<00:02, 107.56it/s]Loading weights:  20%|█▉        | 58/291 [00:00<00:01, 129.30it/s]Loading weights:  26%|██▌       | 76/291 [00:00<00:01, 139.79it/s]Loading weights:  32%|███▏      | 94/291 [00:00<00:01, 144.78it/s]Loading weights:  38%|███▊      | 110/291 [00:00<00:01, 142.89it/s]Loading weights:  43%|████▎     | 126/291 [00:01<00:01, 141.26it/s]Loading weights:  48%|████▊     | 141/291 [00:01<00:01, 139.36it/s]Loading weights:  55%|█████▍    | 159/291 [00:01<00:00, 145.87it/s]Loading weights:  61%|██████    | 177/291 [00:01<00:00, 148.76it/s]Loading weights:  67%|██████▋   | 194/291 [00:01<00:00, 150.53it/s]Loading weights:  73%|███████▎  | 211/291 [00:01<00:00, 152.10it/s]Loading weights:  79%|███████▊  | 229/291 [00:01<00:00, 155.87it/s]Loading weights:  84%|████████▍ | 245/291 [00:01<00:00, 153.52it/s]Loading weights:  90%|████████▉ | 261/291 [00:01<00:00, 150.20it/s]Loading weights:  95%|█████████▌| 277/291 [00:02<00:00, 144.07it/s]Loading weights: 100%|██████████| 291/291 [00:02<00:00, 137.22it/s]
+Generating train split:   0%|          | 0/7473 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 7473/7473 [00:00<00:00, 346599.51 examples/s]
+Generating test split:   0%|          | 0/1319 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 1319/1319 [00:00<00:00, 242729.33 examples/s]
+[run] 200 problems
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+[run] 8/200 (0.68/s)
+[run] 16/200 (0.74/s)
+[run] 24/200 (0.28/s)
+[run] 32/200 (0.33/s)
+[run] 40/200 (0.37/s)
+[run] 48/200 (0.37/s)
+[run] 56/200 (0.39/s)
+[run] 64/200 (0.41/s)
+[run] 72/200 (0.43/s)
+[run] 80/200 (0.45/s)
+[run] 88/200 (0.47/s)
+[run] 96/200 (0.48/s)
+[run] 104/200 (0.50/s)
+[run] 112/200 (0.49/s)
+[run] 120/200 (0.51/s)
+[run] 128/200 (0.52/s)
+[run] 136/200 (0.53/s)
+[run] 144/200 (0.54/s)
+[run] 152/200 (0.56/s)
+[run] 160/200 (0.56/s)
+[run] 168/200 (0.56/s)
+[run] 176/200 (0.57/s)
+[run] 184/200 (0.57/s)
+[run] 192/200 (0.57/s)
+[run] 200/200 (0.47/s)
+[run] DONE gsm8k_meta-llama-3.1-8b-instruct_cot_none_n200_s0: acc 179/200 = 0.895 [0.845, 0.930] in 427s
+=== END llama gsm8k --mode cot --ablation none --max-new 2048 rc=0
+=== START llama gsm8k --mode cot --ablation medium --max-new 2048 04:45:07
+[run] output -> /workspace/hw0/results/b02ffcc7d478/20260902_044510_gsm8k_meta-llama-3.1-8b-instruct_cot_medium_n200_s0
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   0%|          | 1/291 [00:00<00:31,  9.07it/s]Loading weights:   1%|          | 2/291 [00:00<00:36,  7.89it/s]Loading weights:   5%|▌         | 16/291 [00:00<00:04, 60.51it/s]Loading weights:  13%|█▎        | 37/291 [00:00<00:02, 113.67it/s]Loading weights:  20%|█▉        | 58/291 [00:00<00:01, 145.32it/s]Loading weights:  26%|██▋       | 77/291 [00:00<00:01, 155.95it/s]Loading weights:  33%|███▎      | 95/291 [00:00<00:01, 156.45it/s]Loading weights:  38%|███▊      | 111/291 [00:00<00:01, 153.24it/s]Loading weights:  44%|████▎     | 127/291 [00:01<00:01, 143.28it/s]Loading weights:  49%|████▉     | 142/291 [00:01<00:01, 143.47it/s]Loading weights:  55%|█████▍    | 159/291 [00:01<00:00, 144.42it/s]Loading weights:  60%|██████    | 176/291 [00:01<00:00, 150.43it/s]Loading weights:  66%|██████▋   | 193/291 [00:01<00:00, 151.64it/s]Loading weights:  72%|███████▏  | 209/291 [00:01<00:00, 147.45it/s]Loading weights:  77%|███████▋  | 224/291 [00:01<00:00, 143.23it/s]Loading weights:  82%|████████▏ | 239/291 [00:01<00:00, 143.45it/s]Loading weights:  88%|████████▊ | 256/291 [00:01<00:00, 148.27it/s]Loading weights:  94%|█████████▍| 274/291 [00:01<00:00, 155.26it/s]Loading weights: 100%|█████████▉| 290/291 [00:02<00:00, 150.19it/s]Loading weights: 100%|██████████| 291/291 [00:02<00:00, 138.26it/s]
+[run] band 17..25 source=jlens filter=on
+[run] 200 problems
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+[run] 8/200 (0.03/s)
+[run] 16/200 (0.03/s)
+[run] 24/200 (0.03/s)
+[run] 32/200 (0.03/s)
+[run] 40/200 (0.03/s)
+[run] 48/200 (0.03/s)
+[run] 56/200 (0.03/s)
+[run] 64/200 (0.03/s)
+[run] 72/200 (0.03/s)
+[run] 80/200 (0.03/s)
+[run] 88/200 (0.03/s)
+[run] 96/200 (0.03/s)
+[run] 104/200 (0.03/s)
+[run] 112/200 (0.03/s)
+[run] 120/200 (0.03/s)
+[run] 128/200 (0.03/s)
+[run] 136/200 (0.03/s)
+[run] 144/200 (0.03/s)
+[run] 152/200 (0.03/s)
+[run] 160/200 (0.03/s)
+[run] 168/200 (0.03/s)
+[run] 176/200 (0.03/s)
+[run] 184/200 (0.03/s)
+[run] 192/200 (0.03/s)
+[run] 200/200 (0.03/s)
+[run] DONE gsm8k_meta-llama-3.1-8b-instruct_cot_medium_n200_s0: acc 0/200 = 0.000 [0.000, 0.019] in 5751s
+=== END llama gsm8k --mode cot --ablation medium --max-new 2048 rc=0
+=== START llama gsm8k --mode direct --ablation none 06:21:10
+[run] output -> /workspace/hw0/results/b02ffcc7d478/20260902_062114_gsm8k_meta-llama-3.1-8b-instruct_direct_none_n200_s0
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   0%|          | 1/291 [00:00<01:10,  4.11it/s]Loading weights:   6%|▌         | 18/291 [00:00<00:04, 65.19it/s]Loading weights:  11%|█▏        | 33/291 [00:00<00:02, 93.08it/s]Loading weights:  17%|█▋        | 50/291 [00:00<00:02, 117.75it/s]Loading weights:  23%|██▎       | 67/291 [00:00<00:01, 133.65it/s]Loading weights:  28%|██▊       | 82/291 [00:00<00:01, 138.64it/s]Loading weights:  33%|███▎      | 97/291 [00:00<00:01, 130.65it/s]Loading weights:  38%|███▊      | 112/291 [00:00<00:01, 129.58it/s]Loading weights:  43%|████▎     | 126/291 [00:01<00:01, 129.54it/s]Loading weights:  48%|████▊     | 141/291 [00:01<00:01, 129.48it/s]Loading weights:  54%|█████▍    | 158/291 [00:01<00:00, 138.69it/s]Loading weights:  60%|██████    | 175/291 [00:01<00:00, 145.24it/s]Loading weights:  65%|██████▌   | 190/291 [00:01<00:00, 140.98it/s]Loading weights:  70%|███████   | 205/291 [00:01<00:00, 130.68it/s]Loading weights:  76%|███████▌  | 221/291 [00:01<00:00, 134.81it/s]Loading weights:  82%|████████▏ | 238/291 [00:01<00:00, 143.07it/s]Loading weights:  87%|████████▋ | 253/291 [00:02<00:00, 134.46it/s]Loading weights:  92%|█████████▏| 267/291 [00:02<00:00, 135.28it/s]Loading weights:  97%|█████████▋| 283/291 [00:02<00:00, 137.67it/s]Loading weights: 100%|██████████| 291/291 [00:02<00:00, 126.96it/s]
+[run] 200 problems
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+[run] 8/200 (9.27/s)
+[run] 16/200 (14.23/s)
+[run] 24/200 (17.57/s)
+[run] 32/200 (19.90/s)
+[run] 40/200 (18.66/s)
+[run] 48/200 (19.90/s)
+[run] 56/200 (21.10/s)
+[run] 64/200 (22.26/s)
+[run] 72/200 (23.19/s)
+[run] 80/200 (23.89/s)
+[run] 88/200 (24.79/s)
+[run] 96/200 (25.02/s)
+[run] 104/200 (25.68/s)
+[run] 112/200 (25.77/s)
+[run] 120/200 (26.31/s)
+[run] 128/200 (26.39/s)
+[run] 136/200 (26.57/s)
+[run] 144/200 (26.66/s)
+[run] 152/200 (27.02/s)
+[run] 160/200 (27.20/s)
+[run] 168/200 (27.20/s)
+[run] 176/200 (24.35/s)
+[run] 184/200 (24.67/s)
+[run] 192/200 (24.93/s)
+[run] 200/200 (24.59/s)
+[run] DONE gsm8k_meta-llama-3.1-8b-instruct_direct_none_n200_s0: acc 30/200 = 0.150 [0.107, 0.206] in 8s
+=== END llama gsm8k --mode direct --ablation none rc=0
+=== START llama gsm8k --mode direct --ablation medium 06:21:30
+[run] output -> /workspace/hw0/results/b02ffcc7d478/20260902_062134_gsm8k_meta-llama-3.1-8b-instruct_direct_medium_n200_s0
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   0%|          | 1/291 [00:00<01:10,  4.10it/s]Loading weights:   6%|▌         | 18/291 [00:00<00:04, 64.65it/s]Loading weights:  11%|█▏        | 33/291 [00:00<00:02, 91.50it/s]Loading weights:  17%|█▋        | 50/291 [00:00<00:02, 116.36it/s]Loading weights:  23%|██▎       | 67/291 [00:00<00:01, 132.84it/s]Loading weights:  28%|██▊       | 82/291 [00:00<00:01, 137.93it/s]Loading weights:  33%|███▎      | 97/291 [00:00<00:01, 130.18it/s]Loading weights:  38%|███▊      | 112/291 [00:01<00:01, 129.56it/s]Loading weights:  43%|████▎     | 126/291 [00:01<00:01, 129.50it/s]Loading weights:  48%|████▊     | 141/291 [00:01<00:01, 129.56it/s]Loading weights:  54%|█████▍    | 158/291 [00:01<00:00, 138.47it/s]Loading weights:  60%|██████    | 175/291 [00:01<00:00, 145.35it/s]Loading weights:  65%|██████▌   | 190/291 [00:01<00:00, 142.65it/s]Loading weights:  70%|███████   | 205/291 [00:01<00:00, 136.11it/s]Loading weights:  76%|███████▌  | 221/291 [00:01<00:00, 138.34it/s]Loading weights:  82%|████████▏ | 238/291 [00:01<00:00, 146.09it/s]Loading weights:  87%|████████▋ | 253/291 [00:02<00:00, 134.12it/s]Loading weights:  92%|█████████▏| 267/291 [00:02<00:00, 133.37it/s]Loading weights:  97%|█████████▋| 283/291 [00:02<00:00, 136.55it/s]Loading weights: 100%|██████████| 291/291 [00:02<00:00, 126.85it/s]
+[run] band 17..25 source=jlens filter=on
+[run] 200 problems
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+[run] 8/200 (2.26/s)
+[run] 16/200 (2.47/s)
+[run] 24/200 (2.55/s)
+[run] 32/200 (2.57/s)
+[run] 40/200 (2.61/s)
+[run] 48/200 (2.64/s)
+[run] 56/200 (2.64/s)
+[run] 64/200 (2.65/s)
+[run] 72/200 (2.65/s)
+[run] 80/200 (2.66/s)
+[run] 88/200 (2.67/s)
+[run] 96/200 (2.67/s)
+[run] 104/200 (2.68/s)
+[run] 112/200 (2.68/s)
+[run] 120/200 (2.69/s)
+[run] 128/200 (2.69/s)
+[run] 136/200 (2.69/s)
+[run] 144/200 (2.69/s)
+[run] 152/200 (2.68/s)
+[run] 160/200 (2.68/s)
+[run] 168/200 (2.68/s)
+[run] 176/200 (2.68/s)
+[run] 184/200 (2.68/s)
+[run] 192/200 (2.68/s)
+[run] 200/200 (2.68/s)
+[run] DONE gsm8k_meta-llama-3.1-8b-instruct_direct_medium_n200_s0: acc 2/200 = 0.010 [0.003, 0.036] in 75s
+=== END llama gsm8k --mode direct --ablation medium rc=0
+=== START llama run_masked_maintenance 06:22:58
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   0%|          | 1/291 [00:00<00:31,  9.11it/s]Loading weights:   1%|          | 2/291 [00:00<00:35,  8.07it/s]Loading weights:   6%|▌         | 18/291 [00:00<00:03, 68.58it/s]Loading weights:  11%|█▏        | 33/291 [00:00<00:02, 95.28it/s]Loading weights:  17%|█▋        | 50/291 [00:00<00:02, 119.15it/s]Loading weights:  23%|██▎       | 67/291 [00:00<00:01, 135.37it/s]Loading weights:  28%|██▊       | 82/291 [00:00<00:01, 139.56it/s]Loading weights:  33%|███▎      | 97/291 [00:00<00:01, 131.35it/s]Loading weights:  38%|███▊      | 112/291 [00:01<00:01, 130.45it/s]Loading weights:  43%|████▎     | 126/291 [00:01<00:01, 130.33it/s]Loading weights:  48%|████▊     | 140/291 [00:01<00:01, 127.35it/s]Loading weights:  54%|█████▍    | 157/291 [00:01<00:00, 137.07it/s]Loading weights:  59%|█████▉    | 172/291 [00:01<00:00, 138.95it/s]Loading weights:  64%|██████▍   | 186/291 [00:01<00:00, 131.57it/s]Loading weights:  69%|██████▉   | 202/291 [00:01<00:00, 139.43it/s]Loading weights:  75%|███████▍  | 217/291 [00:01<00:00, 142.02it/s]Loading weights:  80%|███████▉  | 232/291 [00:01<00:00, 137.37it/s]Loading weights:  85%|████████▍ | 247/291 [00:01<00:00, 138.43it/s]Loading weights:  90%|████████▉ | 261/291 [00:02<00:00, 134.95it/s]Loading weights:  95%|█████████▍| 275/291 [00:02<00:00, 134.05it/s]Loading weights:  99%|█████████▉| 289/291 [00:02<00:00, 130.86it/s]Loading weights: 100%|██████████| 291/291 [00:02<00:00, 125.71it/s]
+{
+  "n": 96,
+  "baseline": {
+    "acc": 1.0,
+    "k": 96,
+    "wilson95": [
+      0.9615,
+      1.0
+    ]
+  },
+  "masked_use": {
+    "acc": 0.1771,
+    "k": 17,
+    "wilson95": [
+      0.1136,
+      0.2654
+    ]
+  },
+  "severed": {
+    "acc": 0.125,
+    "k": 12,
+    "wilson95": [
+      0.073,
+      0.2059
+    ]
+  },
+  "page": {
+    "acc": 1.0,
+    "k": 96,
+    "wilson95": [
+      0.9615,
+      1.0
+    ]
+  },
+  "gap_occ_z_mean": 0.2625,
+  "gap_occ_z_masked_correct": 0.5418,
+  "gap_occ_z_masked_wrong": 0.2025
+}
+wrote /workspace/hw0/results/b02ffcc7d478/20260902T062335Z_masked_maintenance
+=== END llama run_masked_maintenance rc=0
+=== START llama run_capacity_maintenance 06:23:36
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   0%|          | 1/291 [00:00<00:32,  9.04it/s]Loading weights:   1%|          | 2/291 [00:00<00:35,  8.06it/s]Loading weights:   6%|▌         | 18/291 [00:00<00:03, 69.24it/s]Loading weights:  11%|█▏        | 33/291 [00:00<00:02, 95.31it/s]Loading weights:  17%|█▋        | 50/291 [00:00<00:02, 119.64it/s]Loading weights:  23%|██▎       | 67/291 [00:00<00:01, 134.98it/s]Loading weights:  28%|██▊       | 82/291 [00:00<00:01, 139.00it/s]Loading weights:  33%|███▎      | 97/291 [00:00<00:01, 130.99it/s]Loading weights:  38%|███▊      | 112/291 [00:01<00:01, 129.95it/s]Loading weights:  43%|████▎     | 126/291 [00:01<00:01, 130.52it/s]Loading weights:  48%|████▊     | 141/291 [00:01<00:01, 130.16it/s]Loading weights:  54%|█████▍    | 158/291 [00:01<00:00, 139.08it/s]Loading weights:  60%|██████    | 175/291 [00:01<00:00, 145.47it/s]Loading weights:  65%|██████▌   | 190/291 [00:01<00:00, 141.32it/s]Loading weights:  70%|███████   | 205/291 [00:01<00:00, 131.07it/s]Loading weights:  76%|███████▌  | 221/291 [00:01<00:00, 134.88it/s]Loading weights:  82%|████████▏ | 238/291 [00:01<00:00, 143.05it/s]Loading weights:  87%|████████▋ | 253/291 [00:02<00:00, 132.59it/s]Loading weights:  92%|█████████▏| 267/291 [00:02<00:00, 132.18it/s]Loading weights:  97%|█████████▋| 283/291 [00:02<00:00, 135.79it/s]Loading weights: 100%|██████████| 291/291 [00:02<00:00, 125.97it/s]
+{
+  "n": 96,
+  "baseline": {
+    "acc": 1.0,
+    "k": 96,
+    "wilson95": [
+      0.9615,
+      1.0
+    ]
+  },
+  "masked_use": {
+    "acc": 0.125,
+    "k": 12,
+    "wilson95": [
+      0.073,
+      0.2059
+    ]
+  },
+  "severed": {
+    "acc": 0.125,
+    "k": 12,
+    "wilson95": [
+      0.073,
+      0.2059
+    ]
+  },
+  "page": {
+    "acc": 1.0,
+    "k": 96,
+    "wilson95": [
+      0.9615,
+      1.0
+    ]
+  },
+  "gap_occ_z_mean": 0.3605,
+  "gap_occ_z_masked_correct": 1.1508,
+  "gap_occ_z_masked_wrong": 0.2476
+}
+wrote /workspace/hw0/results/b02ffcc7d478/20260902T062412Z_capacity_maintenance
+=== END llama run_capacity_maintenance rc=0
+=== START llama run_cot_correspondence 06:24:13
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   0%|          | 1/291 [00:00<00:30,  9.36it/s]Loading weights:   1%|          | 2/291 [00:00<00:35,  8.21it/s]Loading weights:   6%|▌         | 17/291 [00:00<00:04, 65.97it/s]Loading weights:  11%|█         | 32/291 [00:00<00:02, 96.87it/s]Loading weights:  17%|█▋        | 49/291 [00:00<00:01, 121.27it/s]Loading weights:  22%|██▏       | 65/291 [00:00<00:01, 133.87it/s]Loading weights:  27%|██▋       | 79/291 [00:00<00:01, 133.18it/s]Loading weights:  33%|███▎      | 95/291 [00:00<00:01, 135.59it/s]Loading weights:  37%|███▋      | 109/291 [00:00<00:01, 130.62it/s]Loading weights:  42%|████▏     | 123/291 [00:01<00:01, 124.40it/s]Loading weights:  48%|████▊     | 140/291 [00:01<00:01, 134.87it/s]Loading weights:  54%|█████▍    | 157/291 [00:01<00:00, 143.01it/s]Loading weights:  59%|█████▉    | 172/291 [00:01<00:00, 143.36it/s]Loading weights:  64%|██████▍   | 187/291 [00:01<00:00, 136.76it/s]Loading weights:  69%|██████▉   | 202/291 [00:01<00:00, 136.75it/s]Loading weights:  75%|███████▍  | 217/291 [00:01<00:00, 140.13it/s]Loading weights:  80%|███████▉  | 232/291 [00:01<00:00, 136.41it/s]Loading weights:  85%|████████▍ | 247/291 [00:01<00:00, 137.56it/s]Loading weights:  90%|████████▉ | 261/291 [00:02<00:00, 134.50it/s]Loading weights:  95%|█████████▍| 275/291 [00:02<00:00, 133.77it/s]Loading weights:  99%|█████████▉| 289/291 [00:02<00:00, 130.63it/s]Loading weights: 100%|██████████| 291/291 [00:02<00:00, 126.28it/s]
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+{
+  "n_scored": 80,
+  "n_dropped": 0,
+  "acc": 0.9625,
+  "z_write": {
+    "mean": 1.562,
+    "sd": 0.315,
+    "se": 0.035,
+    "n": 80
+  },
+  "z_post": {
+    "mean": 0.087,
+    "sd": 0.691,
+    "se": 0.077,
+    "n": 80
+  },
+  "z_use": {
+    "mean": 0.459,
+    "sd": 0.698,
+    "se": 0.078,
+    "n": 80
+  }
+}
+wrote /workspace/hw0/results/b02ffcc7d478/20260902T063147Z_cot_correspondence
+=== END llama run_cot_correspondence rc=0
+POD_D_COMPLETE 06:31:49

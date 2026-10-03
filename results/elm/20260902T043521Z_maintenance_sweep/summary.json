@@ -1,0 +1,58 @@
+{
+  "digit_g10": {
+    "baseline": 1.0,
+    "masked_use": 0.125,
+    "severed": 0.125,
+    "page": 1.0,
+    "n": 48
+  },
+  "digit_g30": {
+    "baseline": 1.0,
+    "masked_use": 0.125,
+    "severed": 0.125,
+    "page": 1.0,
+    "n": 48
+  },
+  "digit_g60": {
+    "baseline": 1.0,
+    "masked_use": 0.1458,
+    "severed": 0.125,
+    "page": 1.0,
+    "n": 48
+  },
+  "digit_g120": {
+    "baseline": 1.0,
+    "masked_use": 0.125,
+    "severed": 0.125,
+    "page": 1.0,
+    "n": 48
+  },
+  "word_g10": {
+    "baseline": 1.0,
+    "masked_use": 0.125,
+    "severed": 0.125,
+    "page": 1.0,
+    "n": 48
+  },
+  "word_g30": {
+    "baseline": 1.0,
+    "masked_use": 0.125,
+    "severed": 0.125,
+    "page": 1.0,
+    "n": 48
+  },
+  "word_g60": {
+    "baseline": 1.0,
+    "masked_use": 0.1667,
+    "severed": 0.125,
+    "page": 1.0,
+    "n": 48
+  },
+  "word_g120": {
+    "baseline": 1.0,
+    "masked_use": 0.2708,
+    "severed": 0.125,
+    "page": 1.0,
+    "n": 48
+  }
+}

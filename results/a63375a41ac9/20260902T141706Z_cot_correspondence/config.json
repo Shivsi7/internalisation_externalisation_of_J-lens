@@ -1,0 +1,33 @@
+{
+  "script": "run_cot_correspondence.py",
+  "argv": [
+    "scripts/run_cot_correspondence.py"
+  ],
+  "model": "Qwen/Qwen3-14B",
+  "band": "medium",
+  "band_layers": [
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32
+  ],
+  "n_programs": 80,
+  "seed": 0,
+  "max_new": 256,
+  "decoding": "greedy via chat template, model's own CoT",
+  "windows": [
+    "write (v1 first written)",
+    "post (between v1 and v3)",
+    "use (after v3 written)"
+  ],
+  "git_commit": "f84f7910f52181b58ecd1ec1a5ffba9033e3c14c",
+  "host": "a63375a41ac9",
+  "gpu": "NVIDIA A40"
+}

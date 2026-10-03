@@ -1,0 +1,24 @@
+{
+  "tag": "gsm8k_meta-llama-3.1-8b-instruct_direct_none_n200_s0",
+  "task": "gsm8k",
+  "accuracy": 0.15,
+  "n_correct": 30,
+  "n": 200,
+  "wilson95": [
+    0.107135265876273,
+    0.20605693826655166
+  ],
+  "by_group": {
+    "all": {
+      "acc": 0.15,
+      "n": 200
+    }
+  },
+  "mean_new_tokens": 3.55,
+  "stop_reasons": {
+    "eos": 199,
+    "length": 1
+  },
+  "wall_seconds": 8.135728120803833,
+  "ablation_stats": null
+}

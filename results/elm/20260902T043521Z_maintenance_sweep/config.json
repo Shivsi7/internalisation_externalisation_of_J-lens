@@ -1,0 +1,20 @@
+{
+  "script": "run_maintenance_sweep.py",
+  "argv": [
+    "/home_nfs/shivam/harvard/cs_2881_hw0/harvard-cs2881-hw0/scripts/run_maintenance_sweep.py"
+  ],
+  "model": "Qwen/Qwen3-4B",
+  "gaps": {
+    "g10": 10,
+    "g30": 30,
+    "g60": 60,
+    "g120": 120
+  },
+  "contents": [
+    "digit",
+    "word"
+  ],
+  "git_commit": "f84f7910f52181b58ecd1ec1a5ffba9033e3c14c",
+  "host": "elm",
+  "gpu": "NVIDIA RTX 6000 Ada Generation"
+}

@@ -1,0 +1,31 @@
+{
+  "script": "run_cot_pub_probes.py",
+  "argv": [
+    "/home_nfs/shivam/harvard/cs_2881_hw0/harvard-cs2881-hw0/scripts/run_cot_pub_probes.py",
+    "--n",
+    "150",
+    "--max-new",
+    "512"
+  ],
+  "model": "Qwen/Qwen3-4B",
+  "band": "medium",
+  "band_layers": [
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28
+  ],
+  "mid_layer": 24,
+  "n_programs": 150,
+  "max_new": 512,
+  "decay_max": 24,
+  "git_commit": "f84f7910f52181b58ecd1ec1a5ffba9033e3c14c",
+  "host": "elm",
+  "gpu": "NVIDIA RTX 6000 Ada Generation"
+}

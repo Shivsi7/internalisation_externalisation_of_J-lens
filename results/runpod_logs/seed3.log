@@ -1,0 +1,109 @@
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[notice] To update, run: python -m pip install --upgrade pip
+[notice] To update, run: python -m pip install --upgrade pip
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+qwen3-4b: /workspace/hw0/lenses/qwen3-4b/qwen3-4b/jlens/Salesforce-wikitext/Qwen3-4B_jacobian_lens.pt (459 MB)
+  JacobianLens(d_model=2560, n_prompts=479, source_layers=[0..34] (35 layers))
+  d_model=2560  n_prompts=479
+  source layers 0..34 (35 fitted)
+  naive workspace band (38-92% of 36): 14..33
+  OK: all 20 band layers present (Qwen/Qwen3-4B)
+BOOTSTRAP_DONE 12:37:25
+=== START --task math500 --n 250 --seed 3 --batch-size 16 --mode cot --ablation medium 12:37:25
+[run] output -> /workspace/hw0/results/392622fe7058/20260902_123728_math500_cot_medium_n250_s3
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files:  33%|███▎      | 1/3 [00:03<00:07,  3.59s/it]Fetching 3 files:  67%|██████▋   | 2/3 [00:06<00:03,  3.09s/it]Fetching 3 files: 100%|██████████| 3/3 [00:07<00:00,  2.03s/it]Fetching 3 files: 100%|██████████| 3/3 [00:07<00:00,  2.37s/it]
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   3%|▎         | 10/398 [00:00<00:04, 96.83it/s]Loading weights:   9%|▉         | 36/398 [00:00<00:01, 185.91it/s]Loading weights:  15%|█▍        | 58/398 [00:00<00:01, 196.63it/s]Loading weights:  20%|██        | 80/398 [00:00<00:01, 200.01it/s]Loading weights:  26%|██▌       | 102/398 [00:00<00:01, 203.03it/s]Loading weights:  31%|███       | 124/398 [00:00<00:01, 204.82it/s]Loading weights:  37%|███▋      | 146/398 [00:00<00:01, 205.77it/s]Loading weights:  42%|████▏     | 168/398 [00:00<00:01, 205.73it/s]Loading weights:  48%|████▊     | 190/398 [00:00<00:01, 207.14it/s]Loading weights:  53%|█████▎    | 212/398 [00:01<00:00, 210.81it/s]Loading weights:  59%|█████▉    | 234/398 [00:01<00:00, 212.75it/s]Loading weights:  64%|██████▍   | 256/398 [00:01<00:00, 210.44it/s]Loading weights:  70%|██████▉   | 278/398 [00:01<00:00, 210.66it/s]Loading weights:  76%|███████▌  | 301/398 [00:01<00:00, 209.95it/s]Loading weights:  81%|████████  | 323/398 [00:01<00:00, 212.63it/s]Loading weights:  87%|████████▋ | 345/398 [00:01<00:00, 211.05it/s]Loading weights:  92%|█████████▏| 367/398 [00:01<00:00, 211.36it/s]Loading weights:  98%|█████████▊| 390/398 [00:01<00:00, 214.22it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 209.44it/s]
+[run] band 19..28 source=jlens filter=on
+Generating test split: 0 examples [00:00, ? examples/s]Generating test split: 500 examples [00:00, 65941.96 examples/s]
+[run] 243 problems
+[run] 16/243 (0.02/s)
+[run] 32/243 (0.02/s)
+[run] 48/243 (0.02/s)
+[run] 64/243 (0.02/s)
+[run] 80/243 (0.02/s)
+[run] 96/243 (0.02/s)
+[run] 112/243 (0.02/s)
+[run] 128/243 (0.02/s)
+[run] 144/243 (0.02/s)
+[run] 160/243 (0.02/s)
+[run] 176/243 (0.02/s)
+[run] 192/243 (0.02/s)
+[run] 208/243 (0.02/s)
+[run] 224/243 (0.02/s)
+[run] 240/243 (0.02/s)
+[run] 243/243 (0.02/s)
+[run] DONE math500_cot_medium_n250_s3: acc 163/243 = 0.671 [0.609, 0.727] in 11669s
+=== END --task math500 --n 250 --seed 3 --batch-size 16 --mode cot --ablation medium rc=0
+=== START --task math500 --n 250 --seed 3 --batch-size 16 --mode cot --ablation none 15:52:12
+[run] output -> /workspace/hw0/results/392622fe7058/20260902_155216_math500_cot_none_n250_s3
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   3%|▎         | 11/398 [00:00<00:03, 109.05it/s]Loading weights:   9%|▉         | 36/398 [00:00<00:01, 187.21it/s]Loading weights:  15%|█▍        | 59/398 [00:00<00:01, 202.53it/s]Loading weights:  21%|██        | 82/398 [00:00<00:01, 210.30it/s]Loading weights:  28%|██▊       | 110/398 [00:00<00:01, 231.52it/s]Loading weights:  34%|███▍      | 135/398 [00:00<00:01, 233.34it/s]Loading weights:  40%|███▉      | 159/398 [00:00<00:01, 222.59it/s]Loading weights:  47%|████▋     | 187/398 [00:00<00:00, 237.83it/s]Loading weights:  53%|█████▎    | 212/398 [00:00<00:00, 239.32it/s]Loading weights:  60%|█████▉    | 237/398 [00:01<00:00, 226.26it/s]Loading weights:  65%|██████▌   | 260/398 [00:01<00:00, 221.28it/s]Loading weights:  71%|███████   | 283/398 [00:01<00:00, 220.62it/s]Loading weights:  77%|███████▋  | 306/398 [00:01<00:00, 217.82it/s]Loading weights:  82%|████████▏ | 328/398 [00:01<00:00, 216.34it/s]Loading weights:  88%|████████▊ | 350/398 [00:01<00:00, 211.92it/s]Loading weights:  93%|█████████▎| 372/398 [00:01<00:00, 212.12it/s]Loading weights:  99%|█████████▉| 394/398 [00:01<00:00, 211.43it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 218.46it/s]
+[run] 243 problems
+[run] 16/243 (0.05/s)
+[run] 32/243 (0.05/s)
+[run] 48/243 (0.05/s)
+[run] 64/243 (0.05/s)
+[run] 80/243 (0.05/s)
+[run] 96/243 (0.05/s)
+[run] 112/243 (0.05/s)
+[run] 128/243 (0.05/s)
+[run] 144/243 (0.05/s)
+[run] 160/243 (0.05/s)
+[run] 176/243 (0.05/s)
+[run] 192/243 (0.05/s)
+[run] 208/243 (0.05/s)
+[run] 224/243 (0.05/s)
+[run] 240/243 (0.05/s)
+[run] 243/243 (0.05/s)
+[run] DONE math500_cot_none_n250_s3: acc 159/243 = 0.654 [0.593, 0.711] in 5246s
+=== END --task math500 --n 250 --seed 3 --batch-size 16 --mode cot --ablation none rc=0
+=== START --task math500 --n 250 --seed 3 --batch-size 16 --mode direct --ablation medium 17:19:47
+[run] output -> /workspace/hw0/results/392622fe7058/20260902_171951_math500_direct_medium_n250_s3
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   2%|▏         | 9/398 [00:00<00:04, 88.52it/s]Loading weights:   9%|▉         | 35/398 [00:00<00:01, 188.12it/s]Loading weights:  14%|█▎        | 54/398 [00:00<00:01, 185.60it/s]Loading weights:  19%|█▉        | 77/398 [00:00<00:01, 199.96it/s]Loading weights:  25%|██▍       | 98/398 [00:00<00:01, 198.29it/s]Loading weights:  30%|███       | 120/398 [00:00<00:01, 201.97it/s]Loading weights:  35%|███▌      | 141/398 [00:00<00:01, 204.24it/s]Loading weights:  41%|████      | 162/398 [00:00<00:01, 205.09it/s]Loading weights:  46%|████▌     | 183/398 [00:00<00:01, 204.21it/s]Loading weights:  51%|█████▏    | 204/398 [00:01<00:00, 203.80it/s]Loading weights:  57%|█████▋    | 225/398 [00:01<00:00, 203.48it/s]Loading weights:  62%|██████▏   | 247/398 [00:01<00:00, 206.47it/s]Loading weights:  68%|██████▊   | 269/398 [00:01<00:00, 204.70it/s]Loading weights:  73%|███████▎  | 291/398 [00:01<00:00, 207.02it/s]Loading weights:  79%|███████▊  | 313/398 [00:01<00:00, 208.05it/s]Loading weights:  84%|████████▍ | 335/398 [00:01<00:00, 208.93it/s]Loading weights:  90%|████████▉ | 357/398 [00:01<00:00, 206.11it/s]Loading weights:  95%|█████████▌| 379/398 [00:01<00:00, 207.47it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 205.11it/s]
+[run] band 19..28 source=jlens filter=on
+[run] 243 problems
+[run] 16/243 (3.29/s)
+[run] 32/243 (3.53/s)
+[run] 48/243 (3.77/s)
+[run] 64/243 (3.56/s)
+[run] 80/243 (3.64/s)
+[run] 96/243 (3.65/s)
+[run] 112/243 (3.68/s)
+[run] 128/243 (3.64/s)
+[run] 144/243 (3.68/s)
+[run] 160/243 (3.72/s)
+[run] 176/243 (3.68/s)
+[run] 192/243 (3.68/s)
+[run] 208/243 (3.68/s)
+[run] 224/243 (3.66/s)
+[run] 240/243 (3.55/s)
+[run] 243/243 (3.43/s)
+[run] DONE math500_direct_medium_n250_s3: acc 49/243 = 0.202 [0.156, 0.257] in 71s
+=== END --task math500 --n 250 --seed 3 --batch-size 16 --mode direct --ablation medium rc=0
+=== START --task math500 --n 250 --seed 3 --batch-size 16 --mode direct --ablation none 17:21:08
+[run] output -> /workspace/hw0/results/392622fe7058/20260902_172111_math500_direct_none_n250_s3
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   3%|▎         | 11/398 [00:00<00:03, 105.87it/s]Loading weights:   9%|▉         | 37/398 [00:00<00:01, 186.81it/s]Loading weights:  15%|█▍        | 59/398 [00:00<00:01, 197.78it/s]Loading weights:  20%|██        | 81/398 [00:00<00:01, 203.26it/s]Loading weights:  26%|██▌       | 103/398 [00:00<00:01, 206.50it/s]Loading weights:  31%|███▏      | 125/398 [00:00<00:01, 208.17it/s]Loading weights:  37%|███▋      | 147/398 [00:00<00:01, 208.75it/s]Loading weights:  42%|████▏     | 169/398 [00:00<00:01, 209.79it/s]Loading weights:  48%|████▊     | 191/398 [00:00<00:00, 211.71it/s]Loading weights:  54%|█████▎    | 213/398 [00:01<00:00, 213.98it/s]Loading weights:  59%|█████▉    | 236/398 [00:01<00:00, 210.66it/s]Loading weights:  65%|██████▍   | 258/398 [00:01<00:00, 210.07it/s]Loading weights:  70%|███████   | 280/398 [00:01<00:00, 211.97it/s]Loading weights:  76%|███████▌  | 302/398 [00:01<00:00, 213.87it/s]Loading weights:  82%|████████▏ | 326/398 [00:01<00:00, 221.11it/s]Loading weights:  88%|████████▊ | 349/398 [00:01<00:00, 218.77it/s]Loading weights:  93%|█████████▎| 372/398 [00:01<00:00, 219.45it/s]Loading weights:  99%|█████████▉| 395/398 [00:01<00:00, 222.46it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 211.93it/s]
+[run] 243 problems
+[run] 16/243 (6.98/s)
+[run] 32/243 (7.97/s)
+[run] 48/243 (10.11/s)
+[run] 64/243 (10.34/s)
+[run] 80/243 (10.53/s)
+[run] 96/243 (10.42/s)
+[run] 112/243 (10.47/s)
+[run] 128/243 (10.24/s)
+[run] 144/243 (10.37/s)
+[run] 160/243 (10.47/s)
+[run] 176/243 (10.30/s)
+[run] 192/243 (10.26/s)
+[run] 208/243 (10.27/s)
+[run] 224/243 (10.20/s)
+[run] 240/243 (9.82/s)
+[run] 243/243 (9.49/s)
+[run] DONE math500_direct_none_n250_s3: acc 55/243 = 0.226 [0.178, 0.283] in 26s
+=== END --task math500 --n 250 --seed 3 --batch-size 16 --mode direct --ablation none rc=0
+JOB_seed3_COMPLETE 17:21:43

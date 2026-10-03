@@ -1,0 +1,170 @@
+{
+  "arith_direct_none": {
+    "acc": 0.0,
+    "k": 0,
+    "n": 4,
+    "wilson95": [
+      0.0,
+      0.4899
+    ],
+    "length_stopped": 0
+  },
+  "arith_direct_medium": {
+    "acc": 0.25,
+    "k": 1,
+    "n": 4,
+    "wilson95": [
+      0.0456,
+      0.6994
+    ],
+    "length_stopped": 0
+  },
+  "arith_cot_none": {
+    "acc": 0.0,
+    "k": 0,
+    "n": 4,
+    "wilson95": [
+      0.0,
+      0.4899
+    ],
+    "length_stopped": 4
+  },
+  "arith_cot_medium": {
+    "acc": 0.0,
+    "k": 0,
+    "n": 4,
+    "wilson95": [
+      0.0,
+      0.4899
+    ],
+    "length_stopped": 4
+  },
+  "recall_direct_none": {
+    "acc": 1.0,
+    "k": 4,
+    "n": 4,
+    "wilson95": [
+      0.5101,
+      1.0
+    ],
+    "length_stopped": 0
+  },
+  "recall_direct_medium": {
+    "acc": 1.0,
+    "k": 4,
+    "n": 4,
+    "wilson95": [
+      0.5101,
+      1.0
+    ],
+    "length_stopped": 0
+  },
+  "recall_cot_none": {
+    "acc": 0.5,
+    "k": 2,
+    "n": 4,
+    "wilson95": [
+      0.15,
+      0.85
+    ],
+    "length_stopped": 4
+  },
+  "recall_cot_medium": {
+    "acc": 0.25,
+    "k": 1,
+    "n": 4,
+    "wilson95": [
+      0.0456,
+      0.6994
+    ],
+    "length_stopped": 4
+  },
+  "transitive_direct_none": {
+    "acc": 1.0,
+    "k": 4,
+    "n": 4,
+    "wilson95": [
+      0.5101,
+      1.0
+    ],
+    "length_stopped": 0
+  },
+  "transitive_direct_medium": {
+    "acc": 1.0,
+    "k": 4,
+    "n": 4,
+    "wilson95": [
+      0.5101,
+      1.0
+    ],
+    "length_stopped": 0
+  },
+  "transitive_cot_none": {
+    "acc": 0.5,
+    "k": 2,
+    "n": 4,
+    "wilson95": [
+      0.15,
+      0.85
+    ],
+    "length_stopped": 4
+  },
+  "transitive_cot_medium": {
+    "acc": 0.5,
+    "k": 2,
+    "n": 4,
+    "wilson95": [
+      0.15,
+      0.85
+    ],
+    "length_stopped": 4
+  },
+  "verbal_direct_none": {
+    "acc": 0.75,
+    "k": 3,
+    "n": 4,
+    "wilson95": [
+      0.3006,
+      0.9544
+    ],
+    "length_stopped": 0
+  },
+  "verbal_direct_medium": {
+    "acc": 0.75,
+    "k": 3,
+    "n": 4,
+    "wilson95": [
+      0.3006,
+      0.9544
+    ],
+    "length_stopped": 0
+  },
+  "verbal_cot_none": {
+    "acc": 0.5,
+    "k": 2,
+    "n": 4,
+    "wilson95": [
+      0.15,
+      0.85
+    ],
+    "length_stopped": 4
+  },
+  "verbal_cot_medium": {
+    "acc": 0.75,
+    "k": 3,
+    "n": 4,
+    "wilson95": [
+      0.3006,
+      0.9544
+    ],
+    "length_stopped": 4
+  },
+  "arith_direct_retention": null,
+  "arith_cot_retention": null,
+  "recall_direct_retention": 1.0,
+  "recall_cot_retention": 0.5,
+  "transitive_direct_retention": 1.0,
+  "transitive_cot_retention": 1.0,
+  "verbal_direct_retention": 1.0,
+  "verbal_cot_retention": 1.5
+}

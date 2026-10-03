@@ -1,0 +1,109 @@
+{
+ "corr": {
+  "Llama-3.1-8B": {
+   "n": 80,
+   "z_write": 1.562,
+   "z_post_ci": [
+    -0.067,
+    0.233
+   ],
+   "paired_drop_ci": [
+    1.339,
+    1.617
+   ],
+   "excl_frac_of_write": 0.149
+  },
+  "Qwen3-14B": {
+   "n": 77,
+   "z_write": 1.055,
+   "z_post_ci": [
+    -0.076,
+    0.248
+   ],
+   "paired_drop_ci": [
+    0.83,
+    1.103
+   ],
+   "excl_frac_of_write": 0.235
+  }
+ },
+ "masked": {
+  "Llama-3.1-8B": {
+   "masked": 0.1771,
+   "severed": 0.125,
+   "diff": 0.052,
+   "p": 0.314
+  },
+  "Qwen3-14B": {
+   "masked": 0.1667,
+   "severed": 0.1146,
+   "diff": 0.052,
+   "p": 0.299
+  },
+  "paired_sign_tests": {
+   "Qwen3-4B": 1.0,
+   "Qwen3-14B": 0.18,
+   "Llama-3.1-8B": 0.06,
+   "note": "exact sign test on the 96 paired items, masked_use vs severed; supersedes the unpaired two-proportion p values above, which understated power"
+  }
+ },
+ "capacity": {
+  "Qwen3-4B": {
+   "masked": 0.1354,
+   "severed": 0.125,
+   "diff": 0.01,
+   "p": 0.83
+  },
+  "Llama-3.1-8B": {
+   "masked": 0.125,
+   "severed": 0.125,
+   "diff": 0.0,
+   "p": 1.0
+  },
+  "Qwen3-14B": {
+   "masked": 0.1354,
+   "severed": 0.125,
+   "diff": 0.01,
+   "p": 0.83
+  }
+ },
+ "battery": {
+  "own": 1.0,
+  "none": 0.20689655172413793,
+  "p_own_vs_none": "6.8e-51",
+  "best_filler": "filler_shuffled",
+  "best_filler_acc": 0.19540229885057472,
+  "p_bestfiller_vs_none": 0.789,
+  "omnibus_cochran_Q": {
+   "conditions": 6,
+   "df": 5,
+   "Q_per_battery": [
+    538.6,
+    549.2,
+    543.5
+   ],
+   "n_items": 170,
+   "p": "<1e-100",
+   "note": "global test across all six prefix conditions, medium arm, per battery; licenses the pairwise sign tests"
+  },
+  "own_vs_each_filler": {
+   "own_vs_filler": {
+    "discordant": "415:0",
+    "p": "2.4e-125"
+   },
+   "own_vs_filler_shuffled": {
+    "discordant": "411:0",
+    "p": "3.8e-124"
+   },
+   "own_vs_filler_dots": {
+    "discordant": "429:0",
+    "p": "1.4e-129"
+   },
+   "own_vs_none": {
+    "discordant": "403:0",
+    "p": "9.7e-122"
+   },
+   "note": "primary epiphenomenalism contrast: token count matched, only content differs; exact sign tests, batteries pooled"
+  }
+ }
+}

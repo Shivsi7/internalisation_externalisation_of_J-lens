@@ -33,11 +33,19 @@ import subprocess
 import sys
 
 REPO = pathlib.Path(__file__).resolve().parents[1]
+import os as _os
+HW0_MODEL = _os.environ.get("HW0_MODEL", "Qwen/Qwen3-4B")
+HW0_LENS = _os.environ.get(
+    "HW0_LENS", str(REPO / "lenses/qwen3-4b/qwen3-4b/jlens/"
+                    "Salesforce-wikitext/Qwen3-4B_jacobian_lens.pt"))
 sys.path.insert(0, str(REPO / "src"))
 
 N_PROGRAMS = 80
-SEED = 0
+SEED = int(_os.environ.get("HW0_SEED", "0"))
 MAX_NEW = 256
+# "var": d = a op c (original). "lit": d = a op <literal> (Addendum 9b),
+# matched to the direct arm's serial budget.
+FINAL = _os.environ.get("HW0_FINAL", "var")
 
 
 def gen_programs(n, rng):
@@ -58,14 +66,22 @@ def gen_programs(n, rng):
             continue
         v1, v2, v3 = vals
         op = rng.choice(["+", "-"])
-        d = v1 + v3 if op == "+" else v1 - v3
-        if not (1 <= d <= 9):
-            continue
+        if FINAL == "lit":
+            k = rng.randint(1, 9)
+            d = v1 + k if op == "+" else v1 - k
+            if not (1 <= d <= 9) or k == v1 or d == v1:
+                continue
+        else:
+            k = None
+            d = v1 + v3 if op == "+" else v1 - v3
+            if not (1 <= d <= 9):
+                continue
         lits23 = {lines[1][0], lines[1][2], vals[1], lines[2][0],
                   lines[2][2], vals[2]}
         if v1 in lits23 or v1 == v2 or v1 == v3:
             continue
-        progs.append({"lines": lines, "final_op": op, "d": d})
+        progs.append({"lines": lines, "final_op": op, "final_lit": k,
+                      "d": d})
     return progs
 
 
@@ -76,18 +92,16 @@ def main() -> None:
 
     from ablation import AblationConfig, JSpaceAblator, band_layers
 
-    tok = AutoTokenizer.from_pretrained("Qwen/Qwen3-4B")
+    tok = AutoTokenizer.from_pretrained(HW0_MODEL)
     model = AutoModelForCausalLM.from_pretrained(
-        "Qwen/Qwen3-4B", dtype=torch.bfloat16, device_map="cuda:0",
+        HW0_MODEL, dtype=torch.bfloat16, device_map="cuda:0",
         attn_implementation="sdpa",
     ).eval()
     for p in model.parameters():
         p.requires_grad_(False)
     device = model.lm_head.weight.device
 
-    lens = jlens.JacobianLens.load(str(
-        REPO / "lenses/qwen3-4b/qwen3-4b/jlens/Salesforce-wikitext/"
-        "Qwen3-4B_jacobian_lens.pt"))
+    lens = jlens.JacobianLens.load(HW0_LENS)
     band = band_layers(model.config.num_hidden_layers, "medium")
     ablator = JSpaceAblator.from_hf(
         model, lens, AblationConfig(band=band, exclusion_filter=False),
@@ -100,10 +114,13 @@ def main() -> None:
         digit_tok[d] = [f[0] for f in forms if len(f) == 1]
     occ_ids = torch.tensor([digit_tok[d][0] for d in range(1, 10)])
 
-    def window_z(hs, lo, hi, value):
+    def window_z(hs, lo, hi, value, decoy=None):
+        """(mean_z, max_z, decoy_max): sustained presence, best single
+        position-layer spike, and the same max for an absent digit (the
+        selection-bias null)."""
         if hi <= lo:
-            return None
-        zs = []
+            return None, None, None
+        zs, zmax, dmax = [], [], []
         for layer in band:
             h = hs[layer + 1][0, lo:hi].float()
             occ = ablator.occupancy(h, layer, occ_ids)
@@ -111,7 +128,13 @@ def main() -> None:
             z = ((col[value - 1] - col.mean())
                  / col.std().clamp_min(1e-6)).item()
             zs.append(z)
-        return sum(zs) / len(zs)
+            zall = ((occ - occ.mean(dim=1, keepdim=True))
+                    / occ.std(dim=1, keepdim=True).clamp_min(1e-6))
+            zmax.append(zall[:, value - 1].max().item())
+            if decoy is not None:
+                dmax.append(zall[:, decoy - 1].max().item())
+        return (sum(zs) / len(zs), max(zmax),
+                max(dmax) if dmax else None)
 
     rng = random.Random(SEED)
     progs = gen_programs(N_PROGRAMS, rng)
@@ -120,8 +143,11 @@ def main() -> None:
         for prog in progs:
             (x1, o1, y1, v1), (x2, o2, y2, v2), (x3, o3, y3, v3) = prog["lines"]
             fo, dval = prog["final_op"], prog["d"]
+            lit = prog.get("final_lit")
+            dline = (f"d = a {fo} {lit}." if lit is not None
+                     else f"d = a {fo} c.")
             question = (f"a = {x1} {o1} {y1}. b = {x2} {o2} {y2}. "
-                        f"c = {x3} {o3} {y3}. d = a {fo} c. "
+                        f"c = {x3} {o3} {y3}. {dline} "
                         "Work through the program line by line, then state "
                         "the value of d.")
             msgs = [{"role": "user", "content": question}]
@@ -149,13 +175,20 @@ def main() -> None:
 
             hs = model(out, output_hidden_states=True).hidden_states
             base = plen
-            row = {
-                "prog": prog,
-                "z_write": window_z(hs, base + max(i1 - 1, 0),
-                                    base + i1 + 2, v1),
-                "z_post": window_z(hs, base + i1 + 4, base + i3, v1),
-                "z_use": window_z(hs, base + i3 + 3, base + len(gen), v1),
-            }
+            used = {v1, v2, v3, dval, x1, y1, x2, y2, x3, y3}
+            if lit is not None:
+                used.add(lit)
+            free = [d9 for d9 in range(1, 10) if d9 not in used]
+            decoy = free[0] if free else None
+            row = {"prog": prog, "decoy": decoy}
+            for key, lo, hi in (
+                    ("z_write", base + max(i1 - 1, 0), base + i1 + 2),
+                    ("z_post", base + i1 + 4, base + i3),
+                    ("z_use", base + i3 + 3, base + len(gen))):
+                m, mx, dm = window_z(hs, lo, hi, v1, decoy)
+                row[key] = m
+                row[key + "_max"] = mx
+                row[key + "_decoy_max"] = dm
             last_digit = None
             for t in reversed(gen):
                 hit = [d for d in range(1, 10) if t in digit_tok[d]]
@@ -181,6 +214,11 @@ def main() -> None:
         "acc": round(k / len(detail), 4) if detail else None,
         "z_write": agg("z_write"), "z_post": agg("z_post"),
         "z_use": agg("z_use"),
+        "z_write_max": agg("z_write_max"), "z_post_max": agg("z_post_max"),
+        "z_use_max": agg("z_use_max"),
+        "z_write_decoy_max": agg("z_write_decoy_max"),
+        "z_post_decoy_max": agg("z_post_decoy_max"),
+        "z_use_decoy_max": agg("z_use_decoy_max"),
     }
 
     ts = dt.datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
@@ -194,8 +232,9 @@ def main() -> None:
         commit = "unknown"
     config = {
         "script": "run_cot_correspondence.py", "argv": sys.argv,
-        "model": "Qwen/Qwen3-4B", "band": "medium", "band_layers": band,
+        "model": HW0_MODEL, "band": "medium", "band_layers": band,
         "n_programs": len(progs), "seed": SEED, "max_new": MAX_NEW,
+        "final_variant": FINAL,
         "decoding": "greedy via chat template, model's own CoT",
         "windows": ["write (v1 first written)", "post (between v1 and v3)",
                     "use (after v3 written)"],

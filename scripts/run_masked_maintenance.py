@@ -50,6 +50,11 @@ import subprocess
 import sys
 
 REPO = pathlib.Path(__file__).resolve().parents[1]
+import os as _os
+HW0_MODEL = _os.environ.get("HW0_MODEL", "Qwen/Qwen3-4B")
+HW0_LENS = _os.environ.get(
+    "HW0_LENS", str(REPO / "lenses/qwen3-4b/qwen3-4b/jlens/"
+                    "Salesforce-wikitext/Qwen3-4B_jacobian_lens.pt"))
 sys.path.insert(0, str(REPO / "src"))
 
 DEMO = (
@@ -77,9 +82,9 @@ def main() -> None:
 
     from ablation import AblationConfig, JSpaceAblator, band_layers
 
-    tok = AutoTokenizer.from_pretrained("Qwen/Qwen3-4B")
+    tok = AutoTokenizer.from_pretrained(HW0_MODEL)
     model = AutoModelForCausalLM.from_pretrained(
-        "Qwen/Qwen3-4B", dtype=torch.bfloat16, device_map="cuda:0",
+        HW0_MODEL, dtype=torch.bfloat16, device_map="cuda:0",
         attn_implementation="sdpa",
     ).eval()
     for p in model.parameters():
@@ -87,9 +92,7 @@ def main() -> None:
     device = model.lm_head.weight.device
     dtype = model.dtype
 
-    lens = jlens.JacobianLens.load(str(
-        REPO / "lenses/qwen3-4b/qwen3-4b/jlens/Salesforce-wikitext/"
-        "Qwen3-4B_jacobian_lens.pt"))
+    lens = jlens.JacobianLens.load(HW0_LENS)
     band = band_layers(model.config.num_hidden_layers, "medium")
     ablator = JSpaceAblator.from_hf(
         model, lens, AblationConfig(band=band, exclusion_filter=False),
@@ -215,7 +218,7 @@ def main() -> None:
         commit = "unknown"
     config = {
         "script": "run_masked_maintenance.py", "argv": sys.argv,
-        "model": "Qwen/Qwen3-4B", "band": "medium", "band_layers": band,
+        "model": HW0_MODEL, "band": "medium", "band_layers": band,
         "conditions": CONDITIONS, "names": NAMES, "values": VALUES,
         "n_fillers": len(FILLERS), "n_items": n, "demo_value": 3,
         "decoding": "argmax over digit tokens at final position, no sampling",

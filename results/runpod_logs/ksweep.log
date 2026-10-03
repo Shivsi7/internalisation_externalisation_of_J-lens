@@ -1,0 +1,100 @@
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[notice] To update, run: python -m pip install --upgrade pip
+[notice] To update, run: python -m pip install --upgrade pip
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+qwen3-4b: /workspace/hw0/lenses/qwen3-4b/qwen3-4b/jlens/Salesforce-wikitext/Qwen3-4B_jacobian_lens.pt (459 MB)
+  JacobianLens(d_model=2560, n_prompts=479, source_layers=[0..34] (35 layers))
+  d_model=2560  n_prompts=479
+  source layers 0..34 (35 fitted)
+  naive workspace band (38-92% of 36): 14..33
+  OK: all 20 band layers present (Qwen/Qwen3-4B)
+BOOTSTRAP_DONE 12:37:26
+=== START --task gsm8k --n 200 --seed 0 --batch-size 16 --ablation medium --k 5 --mode cot --max-new 2048 12:37:26
+[run] output -> /workspace/hw0/results/b6dd9137d83e/20260902_123729_gsm8k_cot_medium_n200_s0
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files:  33%|███▎      | 1/3 [00:00<00:01,  1.16it/s]Fetching 3 files:  67%|██████▋   | 2/3 [00:06<00:03,  3.42s/it]Fetching 3 files: 100%|██████████| 3/3 [00:07<00:00,  2.35s/it]Fetching 3 files: 100%|██████████| 3/3 [00:07<00:00,  2.38s/it]
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   2%|▏         | 6/398 [00:00<00:06, 59.15it/s]Loading weights:   8%|▊         | 33/398 [00:00<00:02, 180.91it/s]Loading weights:  14%|█▍        | 55/398 [00:00<00:01, 198.02it/s]Loading weights:  19%|█▉        | 77/398 [00:00<00:01, 204.83it/s]Loading weights:  25%|██▍       | 98/398 [00:00<00:01, 197.77it/s]Loading weights:  30%|██▉       | 119/398 [00:00<00:01, 198.24it/s]Loading weights:  35%|███▌      | 141/398 [00:00<00:01, 202.76it/s]Loading weights:  41%|████      | 162/398 [00:00<00:01, 201.53it/s]Loading weights:  46%|████▌     | 183/398 [00:00<00:01, 197.16it/s]Loading weights:  51%|█████     | 203/398 [00:01<00:00, 197.93it/s]Loading weights:  57%|█████▋    | 225/398 [00:01<00:00, 204.10it/s]Loading weights:  62%|██████▏   | 246/398 [00:01<00:00, 202.78it/s]Loading weights:  68%|██████▊   | 269/398 [00:01<00:00, 202.86it/s]Loading weights:  73%|███████▎  | 291/398 [00:01<00:00, 203.32it/s]Loading weights:  79%|███████▊  | 313/398 [00:01<00:00, 202.42it/s]Loading weights:  84%|████████▍ | 334/398 [00:01<00:00, 198.54it/s]Loading weights:  90%|████████▉ | 357/398 [00:01<00:00, 199.94it/s]Loading weights:  95%|█████████▌| 379/398 [00:01<00:00, 201.02it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 201.02it/s]
+[run] band 19..28 source=jlens filter=on
+Generating train split:   0%|          | 0/7473 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 7473/7473 [00:00<00:00, 335542.52 examples/s]
+Generating test split:   0%|          | 0/1319 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 1319/1319 [00:00<00:00, 271363.47 examples/s]
+[run] 200 problems
+[run] 16/200 (0.06/s)
+[run] 32/200 (0.05/s)
+[run] 48/200 (0.05/s)
+[run] 64/200 (0.05/s)
+[run] 80/200 (0.05/s)
+[run] 96/200 (0.05/s)
+[run] 112/200 (0.05/s)
+[run] 128/200 (0.05/s)
+[run] 144/200 (0.05/s)
+[run] 160/200 (0.05/s)
+[run] 176/200 (0.05/s)
+[run] 192/200 (0.04/s)
+[run] 200/200 (0.04/s)
+[run] DONE gsm8k_cot_medium_n200_s0: acc 189/200 = 0.945 [0.904, 0.969] in 4576s
+=== END --task gsm8k --n 200 --seed 0 --batch-size 16 --ablation medium --k 5 --mode cot --max-new 2048 rc=0
+=== START --task gsm8k --n 200 --seed 0 --batch-size 16 --ablation medium --k 5 --mode direct 13:54:03
+[run] output -> /workspace/hw0/results/b6dd9137d83e/20260902_135407_gsm8k_direct_medium_n200_s0
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   1%|          | 2/398 [00:00<00:21, 18.65it/s]Loading weights:   7%|▋         | 27/398 [00:00<00:02, 149.94it/s]Loading weights:  16%|█▌        | 64/398 [00:00<00:01, 248.46it/s]Loading weights:  23%|██▎       | 92/398 [00:00<00:01, 259.76it/s]Loading weights:  30%|██▉       | 119/398 [00:00<00:01, 252.89it/s]Loading weights:  36%|███▋      | 145/398 [00:00<00:01, 251.58it/s]Loading weights:  43%|████▎     | 171/398 [00:00<00:01, 225.85it/s]Loading weights:  49%|████▉     | 195/398 [00:00<00:00, 227.54it/s]Loading weights:  56%|█████▌    | 223/398 [00:00<00:00, 240.35it/s]Loading weights:  62%|██████▏   | 248/398 [00:01<00:00, 230.92it/s]Loading weights:  68%|██████▊   | 272/398 [00:01<00:00, 226.18it/s]Loading weights:  74%|███████▍  | 295/398 [00:01<00:00, 224.54it/s]Loading weights:  81%|████████  | 322/398 [00:01<00:00, 233.79it/s]Loading weights:  87%|████████▋ | 346/398 [00:01<00:00, 221.61it/s]Loading weights:  93%|█████████▎| 369/398 [00:01<00:00, 221.36it/s]Loading weights:  99%|█████████▉| 394/398 [00:01<00:00, 227.12it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 227.65it/s]
+[run] band 19..28 source=jlens filter=on
+[run] 200 problems
+[run] 16/200 (3.24/s)
+[run] 32/200 (3.58/s)
+[run] 48/200 (3.63/s)
+[run] 64/200 (3.73/s)
+[run] 80/200 (3.80/s)
+[run] 96/200 (3.81/s)
+[run] 112/200 (3.83/s)
+[run] 128/200 (3.87/s)
+[run] 144/200 (3.86/s)
+[run] 160/200 (3.85/s)
+[run] 176/200 (3.83/s)
+[run] 192/200 (3.84/s)
+[run] 200/200 (3.73/s)
+[run] DONE gsm8k_direct_medium_n200_s0: acc 31/200 = 0.155 [0.111, 0.212] in 54s
+=== END --task gsm8k --n 200 --seed 0 --batch-size 16 --ablation medium --k 5 --mode direct rc=0
+=== START --task gsm8k --n 200 --seed 0 --batch-size 16 --ablation medium --k 20 --mode cot --max-new 2048 13:55:08
+[run] output -> /workspace/hw0/results/b6dd9137d83e/20260902_135511_gsm8k_cot_medium_n200_s0
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   3%|▎         | 10/398 [00:00<00:03, 99.82it/s]Loading weights:   9%|▉         | 36/398 [00:00<00:01, 183.14it/s]Loading weights:  14%|█▍        | 57/398 [00:00<00:01, 182.93it/s]Loading weights:  21%|██        | 82/398 [00:00<00:01, 199.49it/s]Loading weights:  27%|██▋       | 108/398 [00:00<00:01, 219.74it/s]Loading weights:  34%|███▍      | 135/398 [00:00<00:01, 228.36it/s]Loading weights:  40%|███▉      | 158/398 [00:00<00:01, 207.69it/s]Loading weights:  45%|████▌     | 181/398 [00:00<00:01, 213.50it/s]Loading weights:  51%|█████     | 203/398 [00:00<00:00, 212.22it/s]Loading weights:  58%|█████▊    | 229/398 [00:01<00:00, 223.96it/s]Loading weights:  63%|██████▎   | 252/398 [00:01<00:00, 223.55it/s]Loading weights:  70%|██████▉   | 278/398 [00:01<00:00, 226.28it/s]Loading weights:  76%|███████▌  | 301/398 [00:01<00:00, 214.71it/s]Loading weights:  81%|████████  | 323/398 [00:01<00:00, 211.41it/s]Loading weights:  87%|████████▋ | 345/398 [00:01<00:00, 206.60it/s]Loading weights:  92%|█████████▏| 367/398 [00:01<00:00, 206.21it/s]Loading weights:  97%|█████████▋| 388/398 [00:01<00:00, 206.88it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 210.04it/s]
+[run] band 19..28 source=jlens filter=on
+[run] 200 problems
+[run] 16/200 (0.04/s)
+[run] 32/200 (0.04/s)
+[run] 48/200 (0.04/s)
+[run] 64/200 (0.04/s)
+[run] 80/200 (0.04/s)
+[run] 96/200 (0.04/s)
+[run] 112/200 (0.04/s)
+[run] 128/200 (0.04/s)
+[run] 144/200 (0.04/s)
+[run] 160/200 (0.04/s)
+[run] 176/200 (0.04/s)
+[run] 192/200 (0.04/s)
+[run] 200/200 (0.04/s)
+[run] DONE gsm8k_cot_medium_n200_s0: acc 188/200 = 0.940 [0.898, 0.965] in 4987s
+=== END --task gsm8k --n 200 --seed 0 --batch-size 16 --ablation medium --k 20 --mode cot --max-new 2048 rc=0
+=== START --task gsm8k --n 200 --seed 0 --batch-size 16 --ablation medium --k 20 --mode direct 15:18:26
+[run] output -> /workspace/hw0/results/b6dd9137d83e/20260902_151829_gsm8k_direct_medium_n200_s0
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   2%|▏         | 9/398 [00:00<00:04, 87.95it/s]Loading weights:   9%|▊         | 34/398 [00:00<00:01, 182.13it/s]Loading weights:  15%|█▍        | 59/398 [00:00<00:01, 207.73it/s]Loading weights:  20%|██        | 81/398 [00:00<00:01, 212.06it/s]Loading weights:  26%|██▌       | 103/398 [00:00<00:01, 210.89it/s]Loading weights:  31%|███▏      | 125/398 [00:00<00:01, 209.66it/s]Loading weights:  37%|███▋      | 148/398 [00:00<00:01, 209.92it/s]Loading weights:  44%|████▎     | 174/398 [00:00<00:00, 224.06it/s]Loading weights:  51%|█████     | 201/398 [00:00<00:00, 231.28it/s]Loading weights:  57%|█████▋    | 225/398 [00:01<00:00, 221.18it/s]Loading weights:  63%|██████▎   | 249/398 [00:01<00:00, 225.71it/s]Loading weights:  68%|██████▊   | 272/398 [00:01<00:00, 221.78it/s]Loading weights:  74%|███████▍  | 295/398 [00:01<00:00, 220.91it/s]Loading weights:  81%|████████  | 322/398 [00:01<00:00, 228.65it/s]Loading weights:  87%|████████▋ | 345/398 [00:01<00:00, 226.03it/s]Loading weights:  92%|█████████▏| 368/398 [00:01<00:00, 220.15it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 221.27it/s]
+[run] band 19..28 source=jlens filter=on
+[run] 200 problems
+[run] 16/200 (3.16/s)
+[run] 32/200 (3.39/s)
+[run] 48/200 (3.51/s)
+[run] 64/200 (3.56/s)
+[run] 80/200 (3.60/s)
+[run] 96/200 (3.55/s)
+[run] 112/200 (3.55/s)
+[run] 128/200 (3.59/s)
+[run] 144/200 (3.59/s)
+[run] 160/200 (3.58/s)
+[run] 176/200 (3.58/s)
+[run] 192/200 (3.59/s)
+[run] 200/200 (3.49/s)
+[run] DONE gsm8k_direct_medium_n200_s0: acc 28/200 = 0.140 [0.099, 0.195] in 57s
+=== END --task gsm8k --n 200 --seed 0 --batch-size 16 --ablation medium --k 20 --mode direct rc=0
+JOB_ksweep_COMPLETE 15:19:33

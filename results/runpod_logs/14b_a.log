@@ -1,0 +1,121 @@
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[notice] To update, run: python -m pip install --upgrade pip
+[notice] To update, run: python -m pip install --upgrade pip
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+qwen3-4b: /workspace/hw0/lenses/qwen3-4b/qwen3-4b/jlens/Salesforce-wikitext/Qwen3-4B_jacobian_lens.pt (459 MB)
+  JacobianLens(d_model=2560, n_prompts=479, source_layers=[0..34] (35 layers))
+  d_model=2560  n_prompts=479
+  source layers 0..34 (35 fitted)
+  naive workspace band (38-92% of 36): 14..33
+  OK: all 20 band layers present (Qwen/Qwen3-4B)
+BOOTSTRAP_DONE 12:37:41
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+qwen3-14b: /workspace/hw0/lenses/qwen3-14b/qwen3-14b/jlens/Salesforce-wikitext/Qwen3-14B_jacobian_lens.pt (2045 MB)
+  JacobianLens(d_model=5120, n_prompts=615, source_layers=[0..38] (39 layers))
+  d_model=5120  n_prompts=615
+  source layers 0..38 (39 fitted)
+  naive workspace band (38-92% of 40): 16..36
+  OK: all 21 band layers present (Qwen/Qwen3-14B)
+=== START --task gsm8k --n 200 --seed 0 --batch-size 8 --model Qwen/Qwen3-14B --lens-path lenses/qwen3-14b/qwen3-14b/jlens/Salesforce-wikitext/Qwen3-14B_jacobian_lens.pt --mode cot --ablation medium --max-new 2048 12:37:54
+[run] output -> /workspace/hw0/results/bffa10d0c546/20260902_123758_gsm8k_m14b_cot_medium_n200_s0
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Fetching 8 files:   0%|          | 0/8 [00:00<?, ?it/s]Fetching 8 files:  12%|█▎        | 1/8 [00:49<05:49, 49.86s/it]Fetching 8 files:  25%|██▌       | 2/8 [01:33<04:35, 45.94s/it]Fetching 8 files:  38%|███▊      | 3/8 [01:34<02:07, 25.56s/it]Fetching 8 files:  62%|██████▎   | 5/8 [01:36<00:35, 11.67s/it]Fetching 8 files:  75%|███████▌  | 6/8 [01:37<00:17,  8.51s/it]Fetching 8 files:  88%|████████▊ | 7/8 [01:37<00:06,  6.14s/it]Fetching 8 files: 100%|██████████| 8/8 [01:37<00:00,  4.46s/it]Fetching 8 files: 100%|██████████| 8/8 [01:37<00:00, 12.24s/it]
+Loading weights:   0%|          | 0/443 [00:00<?, ?it/s]Loading weights:   0%|          | 1/443 [00:00<02:06,  3.48it/s]Loading weights:   3%|▎         | 15/443 [00:00<00:09, 45.67it/s]Loading weights:   6%|▌         | 26/443 [00:00<00:06, 64.51it/s]Loading weights:   8%|▊         | 37/443 [00:00<00:05, 77.25it/s]Loading weights:  11%|█         | 48/443 [00:00<00:04, 85.67it/s]Loading weights:  13%|█▎        | 59/443 [00:00<00:04, 90.64it/s]Loading weights:  16%|█▌        | 70/443 [00:00<00:03, 95.76it/s]Loading weights:  18%|█▊        | 81/443 [00:01<00:03, 99.39it/s]Loading weights:  21%|██        | 92/443 [00:01<00:03, 102.12it/s]Loading weights:  23%|██▎       | 103/443 [00:01<00:03, 101.86it/s]Loading weights:  26%|██▌       | 114/443 [00:01<00:03, 102.74it/s]Loading weights:  28%|██▊       | 125/443 [00:01<00:03, 101.12it/s]Loading weights:  31%|███       | 136/443 [00:01<00:03, 102.06it/s]Loading weights:  33%|███▎      | 147/443 [00:01<00:02, 103.44it/s]Loading weights:  36%|███▌      | 158/443 [00:01<00:02, 104.07it/s]Loading weights:  38%|███▊      | 169/443 [00:01<00:02, 103.86it/s]Loading weights:  41%|████      | 180/443 [00:01<00:02, 103.92it/s]Loading weights:  43%|████▎     | 191/443 [00:02<00:02, 101.05it/s]Loading weights:  46%|████▌     | 202/443 [00:02<00:02, 101.97it/s]Loading weights:  48%|████▊     | 213/443 [00:02<00:02, 102.86it/s]Loading weights:  51%|█████     | 224/443 [00:02<00:02, 103.29it/s]Loading weights:  53%|█████▎    | 235/443 [00:02<00:02, 101.04it/s]Loading weights:  56%|█████▌    | 246/443 [00:02<00:01, 99.62it/s] Loading weights:  58%|█████▊    | 257/443 [00:02<00:01, 96.08it/s]Loading weights:  60%|██████    | 268/443 [00:02<00:01, 98.65it/s]Loading weights:  63%|██████▎   | 279/443 [00:03<00:01, 93.18it/s]Loading weights:  66%|██████▌   | 291/443 [00:03<00:01, 98.48it/s]Loading weights:  68%|██████▊   | 302/443 [00:03<00:01, 98.64it/s]Loading weights:  71%|███████   | 313/443 [00:03<00:01, 100.47it/s]Loading weights:  73%|███████▎  | 324/443 [00:03<00:01, 100.07it/s]Loading weights:  76%|███████▌  | 335/443 [00:03<00:01, 102.18it/s]Loading weights:  78%|███████▊  | 346/443 [00:03<00:00, 103.69it/s]Loading weights:  81%|████████  | 357/443 [00:03<00:00, 104.85it/s]Loading weights:  83%|████████▎ | 368/443 [00:03<00:00, 105.41it/s]Loading weights:  86%|████████▌ | 379/443 [00:03<00:00, 105.40it/s]Loading weights:  88%|████████▊ | 390/443 [00:04<00:00, 101.83it/s]Loading weights:  91%|█████████ | 401/443 [00:04<00:00, 102.75it/s]Loading weights:  93%|█████████▎| 412/443 [00:04<00:00, 102.99it/s]Loading weights:  95%|█████████▌| 423/443 [00:04<00:00, 103.64it/s]Loading weights:  98%|█████████▊| 435/443 [00:04<00:00, 101.35it/s]Loading weights: 100%|██████████| 443/443 [00:04<00:00, 97.74it/s] 
+[run] band 22..32 source=jlens filter=on
+Generating train split:   0%|          | 0/7473 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 7473/7473 [00:00<00:00, 338565.27 examples/s]
+Generating test split:   0%|          | 0/1319 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 1319/1319 [00:00<00:00, 182855.30 examples/s]
+[run] 200 problems
+[run] 8/200 (0.02/s)
+[run] 16/200 (0.02/s)
+[run] 24/200 (0.02/s)
+[run] 32/200 (0.02/s)
+[run] 40/200 (0.02/s)
+[run] 48/200 (0.02/s)
+[run] 56/200 (0.02/s)
+[run] 64/200 (0.02/s)
+[run] 72/200 (0.02/s)
+[run] 80/200 (0.02/s)
+[run] 88/200 (0.02/s)
+[run] 96/200 (0.02/s)
+[run] 104/200 (0.02/s)
+[run] 112/200 (0.02/s)
+[run] 120/200 (0.02/s)
+[run] 128/200 (0.02/s)
+[run] 136/200 (0.02/s)
+[run] 144/200 (0.02/s)
+[run] 152/200 (0.02/s)
+[run] 160/200 (0.02/s)
+[run] 168/200 (0.02/s)
+[run] 176/200 (0.02/s)
+[run] 184/200 (0.02/s)
+[run] 192/200 (0.02/s)
+[run] 200/200 (0.02/s)
+[run] DONE gsm8k_m14b_cot_medium_n200_s0: acc 180/200 = 0.900 [0.851, 0.934] in 11888s
+=== END --task gsm8k --n 200 --seed 0 --batch-size 8 --model Qwen/Qwen3-14B --lens-path lenses/qwen3-14b/qwen3-14b/jlens/Salesforce-wikitext/Qwen3-14B_jacobian_lens.pt --mode cot --ablation medium --max-new 2048 rc=0
+=== START --task gsm8k --n 200 --seed 0 --batch-size 8 --model Qwen/Qwen3-14B --lens-path lenses/qwen3-14b/qwen3-14b/jlens/Salesforce-wikitext/Qwen3-14B_jacobian_lens.pt --mode direct --ablation medium 15:58:03
+[run] output -> /workspace/hw0/results/bffa10d0c546/20260902_155806_gsm8k_m14b_direct_medium_n200_s0
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/443 [00:00<?, ?it/s]Loading weights:   0%|          | 1/443 [00:00<00:50,  8.76it/s]Loading weights:   0%|          | 2/443 [00:00<01:03,  7.00it/s]Loading weights:   3%|▎         | 15/443 [00:00<00:08, 50.72it/s]Loading weights:   6%|▌         | 27/443 [00:00<00:06, 68.31it/s]Loading weights:   9%|▊         | 38/443 [00:00<00:05, 80.10it/s]Loading weights:  11%|█         | 49/443 [00:00<00:04, 88.88it/s]Loading weights:  14%|█▎        | 60/443 [00:00<00:04, 93.16it/s]Loading weights:  16%|█▌        | 71/443 [00:00<00:03, 97.96it/s]Loading weights:  19%|█▊        | 82/443 [00:01<00:03, 101.25it/s]Loading weights:  21%|██        | 93/443 [00:01<00:03, 103.37it/s]Loading weights:  23%|██▎       | 104/443 [00:01<00:03, 104.77it/s]Loading weights:  26%|██▌       | 115/443 [00:01<00:03, 105.37it/s]Loading weights:  28%|██▊       | 126/443 [00:01<00:03, 103.15it/s]Loading weights:  31%|███       | 137/443 [00:01<00:02, 104.09it/s]Loading weights:  33%|███▎      | 148/443 [00:01<00:02, 104.64it/s]Loading weights:  36%|███▌      | 159/443 [00:01<00:02, 105.09it/s]Loading weights:  38%|███▊      | 170/443 [00:01<00:02, 105.19it/s]Loading weights:  41%|████      | 181/443 [00:01<00:02, 105.23it/s]Loading weights:  43%|████▎     | 192/443 [00:02<00:02, 102.69it/s]Loading weights:  46%|████▌     | 203/443 [00:02<00:02, 103.38it/s]Loading weights:  48%|████▊     | 214/443 [00:02<00:02, 103.97it/s]Loading weights:  51%|█████     | 225/443 [00:02<00:02, 104.44it/s]Loading weights:  53%|█████▎    | 236/443 [00:02<00:02, 102.50it/s]Loading weights:  56%|█████▌    | 247/443 [00:02<00:01, 98.69it/s] Loading weights:  58%|█████▊    | 257/443 [00:02<00:01, 94.39it/s]Loading weights:  61%|██████    | 269/443 [00:02<00:01, 100.28it/s]Loading weights:  63%|██████▎   | 280/443 [00:02<00:01, 101.99it/s]Loading weights:  66%|██████▌   | 291/443 [00:03<00:01, 102.97it/s]Loading weights:  68%|██████▊   | 302/443 [00:03<00:01, 103.44it/s]Loading weights:  71%|███████   | 313/443 [00:03<00:01, 104.68it/s]Loading weights:  73%|███████▎  | 324/443 [00:03<00:01, 103.30it/s]Loading weights:  76%|███████▌  | 335/443 [00:03<00:01, 103.95it/s]Loading weights:  78%|███████▊  | 346/443 [00:03<00:00, 105.50it/s]Loading weights:  81%|████████  | 357/443 [00:03<00:00, 106.44it/s]Loading weights:  83%|████████▎ | 368/443 [00:03<00:00, 106.52it/s]Loading weights:  86%|████████▌ | 379/443 [00:03<00:00, 106.19it/s]Loading weights:  88%|████████▊ | 390/443 [00:03<00:00, 103.56it/s]Loading weights:  91%|█████████ | 401/443 [00:04<00:00, 104.05it/s]Loading weights:  93%|█████████▎| 413/443 [00:04<00:00, 101.80it/s]Loading weights:  97%|█████████▋| 428/443 [00:04<00:00, 112.90it/s]Loading weights:  99%|█████████▉| 440/443 [00:04<00:00, 111.76it/s]Loading weights: 100%|██████████| 443/443 [00:04<00:00, 99.69it/s] 
+[run] band 22..32 source=jlens filter=on
+[run] 200 problems
+[run] 8/200 (1.10/s)
+[run] 16/200 (1.14/s)
+[run] 24/200 (1.17/s)
+[run] 32/200 (1.17/s)
+[run] 40/200 (1.18/s)
+[run] 48/200 (1.19/s)
+[run] 56/200 (1.19/s)
+[run] 64/200 (1.19/s)
+[run] 72/200 (1.19/s)
+[run] 80/200 (1.19/s)
+[run] 88/200 (1.20/s)
+[run] 96/200 (1.19/s)
+[run] 104/200 (1.20/s)
+[run] 112/200 (1.20/s)
+[run] 120/200 (1.20/s)
+[run] 128/200 (1.20/s)
+[run] 136/200 (1.20/s)
+[run] 144/200 (1.20/s)
+[run] 152/200 (1.20/s)
+[run] 160/200 (1.20/s)
+[run] 168/200 (1.20/s)
+[run] 176/200 (1.19/s)
+[run] 184/200 (1.19/s)
+[run] 192/200 (1.19/s)
+[run] 200/200 (1.19/s)
+[run] DONE gsm8k_m14b_direct_medium_n200_s0: acc 20/200 = 0.100 [0.066, 0.149] in 168s
+=== END --task gsm8k --n 200 --seed 0 --batch-size 8 --model Qwen/Qwen3-14B --lens-path lenses/qwen3-14b/qwen3-14b/jlens/Salesforce-wikitext/Qwen3-14B_jacobian_lens.pt --mode direct --ablation medium rc=0
+=== START --task gsm8k --n 200 --seed 0 --batch-size 8 --model Qwen/Qwen3-14B --lens-path lenses/qwen3-14b/qwen3-14b/jlens/Salesforce-wikitext/Qwen3-14B_jacobian_lens.pt --mode direct --ablation none 16:01:09
+[run] output -> /workspace/hw0/results/bffa10d0c546/20260902_160113_gsm8k_m14b_direct_none_n200_s0
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/443 [00:00<?, ?it/s]Loading weights:   0%|          | 1/443 [00:00<02:19,  3.18it/s]Loading weights:   4%|▎         | 16/443 [00:00<00:09, 46.17it/s]Loading weights:   6%|▌         | 27/443 [00:00<00:06, 64.58it/s]Loading weights:   9%|▊         | 38/443 [00:00<00:05, 77.23it/s]Loading weights:  11%|█         | 49/443 [00:00<00:04, 86.50it/s]Loading weights:  14%|█▎        | 60/443 [00:00<00:04, 92.16it/s]Loading weights:  16%|█▌        | 71/443 [00:00<00:03, 96.92it/s]Loading weights:  19%|█▊        | 82/443 [00:01<00:03, 100.33it/s]Loading weights:  21%|██        | 93/443 [00:01<00:03, 103.07it/s]Loading weights:  23%|██▎       | 104/443 [00:01<00:03, 104.82it/s]Loading weights:  26%|██▌       | 115/443 [00:01<00:03, 105.27it/s]Loading weights:  28%|██▊       | 126/443 [00:01<00:03, 103.27it/s]Loading weights:  31%|███       | 137/443 [00:01<00:02, 103.67it/s]Loading weights:  33%|███▎      | 148/443 [00:01<00:02, 104.33it/s]Loading weights:  36%|███▌      | 159/443 [00:01<00:02, 105.86it/s]Loading weights:  38%|███▊      | 170/443 [00:01<00:02, 105.55it/s]Loading weights:  41%|████      | 181/443 [00:01<00:02, 105.12it/s]Loading weights:  43%|████▎     | 192/443 [00:02<00:02, 102.10it/s]Loading weights:  46%|████▌     | 203/443 [00:02<00:02, 102.47it/s]Loading weights:  48%|████▊     | 214/443 [00:02<00:02, 102.35it/s]Loading weights:  51%|█████     | 225/443 [00:02<00:02, 102.81it/s]Loading weights:  53%|█████▎    | 236/443 [00:02<00:02, 101.15it/s]Loading weights:  56%|█████▌    | 247/443 [00:02<00:02, 97.14it/s] Loading weights:  58%|█████▊    | 258/443 [00:02<00:01, 95.97it/s]Loading weights:  61%|██████    | 269/443 [00:02<00:01, 98.47it/s]Loading weights:  63%|██████▎   | 280/443 [00:02<00:01, 100.40it/s]Loading weights:  66%|██████▌   | 291/443 [00:03<00:01, 101.70it/s]Loading weights:  68%|██████▊   | 303/443 [00:03<00:01, 99.66it/s] Loading weights:  71%|███████   | 314/443 [00:03<00:01, 101.29it/s]Loading weights:  73%|███████▎  | 325/443 [00:03<00:01, 100.34it/s]Loading weights:  76%|███████▌  | 336/443 [00:03<00:01, 102.55it/s]Loading weights:  79%|███████▉  | 351/443 [00:03<00:00, 113.28it/s]Loading weights:  82%|████████▏ | 363/443 [00:03<00:00, 111.73it/s]Loading weights:  85%|████████▍ | 375/443 [00:03<00:00, 113.27it/s]Loading weights:  87%|████████▋ | 387/443 [00:03<00:00, 110.57it/s]Loading weights:  90%|█████████ | 399/443 [00:04<00:00, 111.14it/s]Loading weights:  93%|█████████▎| 411/443 [00:04<00:00, 103.97it/s]Loading weights:  95%|█████████▌| 422/443 [00:04<00:00, 104.45it/s]Loading weights:  98%|█████████▊| 433/443 [00:04<00:00, 104.60it/s]Loading weights: 100%|██████████| 443/443 [00:04<00:00, 98.58it/s] 
+[run] 200 problems
+[run] 8/200 (5.04/s)
+[run] 16/200 (6.77/s)
+[run] 24/200 (7.91/s)
+[run] 32/200 (8.11/s)
+[run] 40/200 (8.31/s)
+[run] 48/200 (8.30/s)
+[run] 56/200 (8.45/s)
+[run] 64/200 (8.55/s)
+[run] 72/200 (8.65/s)
+[run] 80/200 (8.64/s)
+[run] 88/200 (8.72/s)
+[run] 96/200 (8.51/s)
+[run] 104/200 (8.56/s)
+[run] 112/200 (8.68/s)
+[run] 120/200 (8.83/s)
+[run] 128/200 (8.79/s)
+[run] 136/200 (8.75/s)
+[run] 144/200 (8.73/s)
+[run] 152/200 (8.69/s)
+[run] 160/200 (8.67/s)
+[run] 168/200 (8.71/s)
+[run] 176/200 (8.67/s)
+[run] 184/200 (8.59/s)
+[run] 192/200 (8.59/s)
+[run] 200/200 (8.53/s)
+[run] DONE gsm8k_m14b_direct_none_n200_s0: acc 67/200 = 0.335 [0.273, 0.403] in 23s
+=== END --task gsm8k --n 200 --seed 0 --batch-size 8 --model Qwen/Qwen3-14B --lens-path lenses/qwen3-14b/qwen3-14b/jlens/Salesforce-wikitext/Qwen3-14B_jacobian_lens.pt --mode direct --ablation none rc=0
+JOB_14b_a_COMPLETE 16:01:47

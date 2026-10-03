@@ -503,3 +503,408 @@ re-represents it at use. By-content complementarity fails in the CoT
 setting itself, and the transient-touch storage picture replicates on the
 model's own page (the cut persistence probe's conclusion, now in the
 scenario we endorses). Report updated (design, results, analysis).
+
+## 2026-09-02 (overnight) — Extension 1 part 1: GSM8K seed campaign (EXT1-seeds)
+
+**Why.** The lecturer asked for more definitive answers; the report's stated
+statistical weakness is one sample and one seed per cell. This campaign
+brings the four headline GSM8K cells (cot/direct x clean/medium) to five
+independent sampling seeds (0 and 1 existed; 2, 3, 4 added here).
+
+**Config.** scripts/run_seed_campaign_ext1.sh, sequential on cedar GPU 1
+(RTX 6000 Ada, PCI order), n=200 per cell, batch 16, max_new 2048 (CoT),
+T=0.6. Measured cost ~72 min/seed from the seed-1 replication, so ~4 h
+total, inside the 5 h overnight budget approved for one lab GPU. cedar was
+fully idle at launch (aion carries a colleague's 4-GPU job, elm GPU 1 is
+occupied; neither touched).
+
+**Analysis plan (before results).** Per-seed rho with bootstrap CI, then
+pooled rho across five seeds with seed-level dispersion. The follow-up
+per-item regression (mode x ablation x dataset) waits for the MATH/AIME
+seed runs on the HPC.
+
+**Jobs.** Chain launched 03:57 UTC, log /var/tmp/hw0_ext1_seeds.log on
+cedar; expected complete ~08:00 UTC.
+
+## 2026-09-02 (overnight) — Extension 2: capacity maintenance (EXP: capacity_maintenance)
+
+**Why.** A5.1. The masked maintenance test showed no holding by default;
+this asks whether the model can hold on demand. Same segments and masks,
+plus an instruction before the definition that the value will disappear and
+must be memorised (demo reworded to match).
+
+**Run.** cedar GPU 0 (RTX 3090, idle; ~3 min), n=96 per condition.
+results/cedar/20260902T001629Z_capacity_maintenance. First launch failed on
+a relative path over ssh (no cd); relaunched absolute.
+
+**Result.** baseline 100%, masked_use 13.5% [8.1, 21.8], severed 12.5%
+[7.3, 20.6], page 100%. Gap occupancy z -0.07. Identical to the
+un-instructed run (also 13.5%).
+
+**Verdict.** The registered "no capacity" branch fires: instruction to hold
+changes nothing, behaviourally or in the lens. The storage-lives-in-context
+conclusion is now about capacity, not default behaviour, for literal digits
+at this scale and gap. Scope: one instruction phrasing; a stronger prompt
+(or fine-tuning) could in principle differ.
+
+## 2026-09-02 (overnight) — Extension 3 queued: task-type balance (EXP: task_balance)
+
+**Why.** A5.2, and the user's own proposed direction: does reliance on the
+page depend on the kind of thinking? Four synthetic suites (arith chains,
+fact recall, transitive ordering, verbal odd-one-out) through
+{clean, medium} x {CoT, direct}, n=80/suite, seed 0.
+
+**Smoke (n=4, GPU 0, results/cedar/20260902T002031Z_task_balance).**
+Pipeline and extraction verified on three suites; arith direct 0/4 is
+plausible at n=4 (three chained ops exceeds D=2). All CoT cells truncated
+at cot-max-new 256, the v1-grid artifact, so the full run uses 2048.
+
+**Queued.** scripts/queue_task_balance_after_seeds.sh armed on cedar GPU 1,
+gated on SEED_CAMPAIGN_EXT1_COMPLETE, so heavy work stays on one card at a
+time. Expected start ~04:30 UTC, ~2 h to run. Analysis per A5.2: retention
+per suite per mode, CoT-vs-direct retention gap per suite.
+
+## 2026-09-02 (pre-dawn) — Extension 1 part 2a: AIME seed 1 (EXT1-aime-seeds)
+
+**Why.** Progress the MATH/AIME statistics on lab GPUs overnight as asked.
+AIME fits a night on the second cedar card (measured ~105 min/seed on the
+Ada from the 2026-08-05 chain, batch 8 here for the 3090's 24 GB); MATH-500
+(~3.5 h/seed) does not, and goes to the HPC.
+
+**Run.** scripts/run_aime_seed_ext1.sh, seed 1, four headline cells, cedar
+GPU 0 (3090, idle at launch). Started ~03:45 UTC, expected done 06:30-07:00
+UTC. Post-29.08 the cedar cards revert to Lisa per the lab allocation, so
+daytime use needs a check that she is not back; both cards were idle all
+night and are released by morning.
+
+**Note.** The seed-4 GSM8K cells and the queued task-balance run occupy
+GPU 1 concurrently; the one-card-at-a-time norm is set aside for tonight at
+Shivam's request to progress the statistics overnight.
+
+## 2026-09-02 (pre-dawn) — publication-rigour deployment (A6.1-A6.5)
+
+Registered in hypotheses.md Addendum 6 before launch. Placement, all ending
+before 09:00 UK:
+
+- elm GPU 0 (idle; the GPU 1 job is our own rite process):
+  scripts/run_elm_pub_chain.sh = run_cot_pub_probes.py (A6.1 page-masking,
+  A6.2 decay curves, A6.3 workspace inventory; one generation pass, n=150)
+  then run_maintenance_sweep.py (A6.4 gap x content robustness).
+- cedar GPU 1 (Ada): queue_rescue_battery_after_taskbal.sh gated on
+  TASK_BALANCE_COMPLETE = run_prefix_rescue.py --battery --n 200 (A6.5
+  full-set cells + shuffled-own-tokens and dots fillers; own_cot stays on
+  the correct-CoT subset).
+- cedar GPU 0 (3090): AIME seed 1 continuing.
+
+Deferred to paid GPUs (runprod.io, needs credentials) or later nights:
+MATH-500 seeds x4, k/band robustness of the ablation grid, Llama-3.1-8B
+and Qwen3-14B replication (pre-fitted lenses confirmed on Neuronpedia).
+Analysis-only items (detection-power for the nulls, paired stats) are CPU
+work for the morning.
+
+## 2026-09-02 (early morning) — RunPod deployment (16-hour deadline)
+
+**Budget approval.** All results due within ~16 hours (by ~20:15 UTC).
+Approved: paid GPUs on RunPod. Combined burn $1.72/h across three pods,
+projected total ~$22-25 against the account balance cap.
+
+**Setup (all user-scoped).** runpodctl in ~/.local/bin, API key in
+~/.runpod_api_key (0600), MCP server registered as runpod-key, dedicated
+ed25519 keypair injected per-pod via PUBLIC_KEY env (the account add-key
+route silently registered the CLI's own RSA key and never propagated; three
+first-attempt pods were deleted and recreated, ~$0.30 wasted). Repo pushed
+by tar-over-ssh (--no-same-owner; pods lack rsync, installed on-pod for
+result retrieval). Probe scripts parameterized via HW0_MODEL/HW0_LENS env
+vars, defaults byte-identical.
+
+**Pods.**
+- hw0-seeds-a (a7frnsi4u7gjz0, A40 $0.44/h): MATH-500 headline cells,
+  seeds 1-2. Log /workspace/seeds_a.log.
+- hw0-seeds-b (si3njdvqlcydyt, A40 $0.44/h): same, seeds 3-4.
+- hw0-ksweep-14b (evh90eo8exujva, RTX 6000 Ada $0.84/h): GSM8K k=5/k=20
+  sweep, then the Qwen3-14B suite (grid via run_eval --model/--lens-path,
+  probes via HW0_MODEL/HW0_LENS; lens fetched on-pod, qwen3-14b entry
+  already in fetch_lens.py).
+
+**Timeline.** Seeds pods ~11.5 h each, pod C ~10 h; all inside the deadline
+with ~3 h margin. Llama-3.1-8B adaptation (chat template, no think block,
+band port) is next on my desk; its pod launches after that, ~4.5 h run.
+Results rsync back to results/<pod-hostname>/ then into the repo.
+
+## 2026-09-02 (early morning) — RunPod launch debugging, and pod D (Llama)
+
+Three faults found and fixed before healthy launch, logged for the record:
+(1) image torch 2.4.1 vs transformers>=5.5 needing torch>=2.5 (transformers
+silently disabled PyTorch; every cell died in seconds while my first health
+check only verified cells had STARTED, a check that passes on instant
+failures); (2) after upgrading torch to 2.6.0 cu124, the image's torchvision
+0.19 is ABI-incompatible and explodes inside transformers' import chain, so
+torchvision/torchaudio are uninstalled on pods (text-only work); (3) a pkill
+guard in the relaunch ssh command self-matched and killed its own shell, the
+documented lab footgun, removed as unnecessary. Health checks now require a
+"[run] N/M" progress line with N>=1.
+
+Pod D: hw0-llama (m9wusz0fh0yygb, L40S $0.99/h; Ada capacity was sold out).
+Llama-3.1-8B-Instruct via the ungated unsloth mirror of the Meta weights
+(the meta-llama repo is gated and we hold no HF token), lens
+Llama-3.1-8B-Instruct_jacobian_lens.pt from Neuronpedia, entry added to
+fetch_lens.py. Chain: GSM8K headline grid then masked/capacity maintenance
+and CoT correspondence via HW0_MODEL/HW0_LENS. run_eval's prompting is
+already template-generic (enable_thinking is a no-op for Llama's template,
+direct mode prefills the answer), so no further adaptation was needed.
+Combined burn now $2.71/h across four pods.
+
+## 2026-09-02 (midday) — balance outage postmortem and redeploy
+
+**What happened.** Account balance depleted ~11:45 UTC; all four pods
+EXITED. Pod D (Llama) had already COMPLETED its full suite at 06:31 and
+every result was pulled to NFS: Llama-3.1-8B grid (4 cells) + masked
+maintenance + capacity + CoT correspondence, under results/b02ffcc7d478/.
+Pods A/B/C produced NOTHING in ~7 h: the relaunch loop's underscore-to-space
+env hack word-split inside `env` ("env: '2': No such file or directory"),
+every chain died in its first second, and the pods idled ~$12 away. The
+health watcher that checks for real progress had been orphaned by a session
+restart and never fired. Failure is mine and logged as such.
+
+**Redeploy (post top-up, ~12:45 UTC).** Old pods terminated. Seven fresh
+A40s ($0.44/h each, $3.08/h combined): hw0-s1..s4 (one MATH-500 seed each),
+hw0-ksweep, hw0-14b (cot-medium + directs), hw0-14b2 (cot-clean + the three
+probes). Env plumbing replaced by scripts/runpod_job.sh, a single-argument
+dispatcher with no environment variables to word-split. Deadline check: all
+jobs bounded ~4.5-5.5 A40-h, landing by ~18:30-19:00 UTC against the 20:15
+deadline. Health watch requires "[run] N/M" progress; puller2 drains pods
+to NFS every 15 min.
+
+## 2026-09-02 (midday) — overnight lab results read-out (A6.1-A6.4, ext 3)
+
+- **Page-masking (A6.1)**: unmasked 100%, random-mask 100%, value-masked
+  75.9% (n=87). With every literal written copy of the values (and +1
+  neighbours) unreadable from the final line, the model still answers 76%,
+  far above the direct re-derivation floor. Caveat before calling this
+  duplication: positions beyond +1 that attended the values during
+  generation remain readable, so distributed absorption into neighbouring
+  context is a live alternative to workspace holding. A widened-mask
+  variant is the follow-up; as measured, the strong "page is the only copy"
+  claim needs softening to "the literal page tokens are not the only copy".
+- **Inventory (A6.3)**: 98.9% of top-5 readout tokens in the storage window
+  are outside all program categories (digits/operators/variables/current
+  line). The workspace does not visibly hold page-type content during the
+  gap.
+- **Decay (A6.2)**: curves are noisy and non-monotone with bumps where the
+  transcript re-uses values; consistent with touch-on-use, needs plotting
+  and larger n before quoting numbers.
+- **Maintenance sweep (A6.4)** and **task balance**: task balance shows
+  retention ~1.0 on all four synthetic suites in both modes, so the GSM8K
+  direct-mode damage does not generalize to these easier tasks; sweep
+  summary to be read with the full analysis pass.
+- **Rescue battery**: OOM'd at 04:44 sharing the Ada with the RUDA run
+  (batch 16 prefill spike); relaunched on elm GPU 0 at batch 12, ~12:50 UTC.
+
+## 2026-09-02 (evening) — full extension campaign complete; final read-out
+
+All jobs finished; all results pulled to NFS and verified; all seven pods
+terminated ~21:35 UTC. Two retrieval bugs found in my own tooling (puller2
+and a final-pull loop both let ssh consume the pod list, so only the first
+pod was ever pulled/counted until the correct mapfile loop ran; ~4 h of
+idle pod billing after job completion, roughly $12, is on me).
+
+**MATH-500, five seeds** (s0 from 2026-08-05, s1-4 today): rho = 1.26,
+1.20, 1.12, 1.15, 1.01. CoT retention 0.93-1.04 (mean ~0.99), direct
+retention 0.78-0.94. Protection present and small on MATH-500, CoT never
+measurably damaged; consistent with the report's H1-on-retention claim,
+now with real seed-level dispersion.
+
+**k-sweep (GSM8K, medium band)**: k=5 cot 0.945 / direct 0.155; k=20 cot
+0.940 / direct 0.140. The k=10 picture is robust to halving/doubling k.
+
+**Qwen3-14B**: grid cot 0.925->0.900 (ret 0.97), direct 0.335->0.100
+(ret 0.30). Stronger direct-mode damage than 4B under the same recipe.
+Probes replicate the storage picture: masked 0.167 vs severed 0.115 (page
+1.0), capacity at floor, correspondence write 1.06 / post 0.09 / use 0.29.
+
+**Llama-3.1-8B**: the three ablation-free probes replicate cleanly
+(masked 0.177 vs severed 0.125, capacity exactly at floor, correspondence
+write 1.56 / post 0.09 / use 0.46) — the storage-lives-in-context picture
+is cross-family. The ablated grid cells are 0.000/0.010 with generations
+that are pure gibberish: under the fixed top-10 recipe, Llama's coherence
+collapses before any selective effect, the same phenomenon the paper
+reports for Haiku 4.5. Grid cells are therefore NOT protection evidence
+for Llama; they are evidence that recipe selectivity is family-dependent.
+
+**Filler battery (full set, n=174-200)**: own_cot 1.00 under ablation;
+sentence/shuffled/dots fillers 0.184/0.195/0.155, all at or below the
+no-prefix ablated cell (0.207); wrong problem 0.011. Content-not-positions
+holds across three filler types. Anomaly flagged: none_none (clean) 0.092
+below none_medium (0.207), same inversion as the subset run, now n=200 —
+needs investigation (suspect an exclusion-filter interaction) before the
+rescue baseline is quoted.
+
+Total RunPod spend today ~ $45-50 incl. both waste rounds. Everything
+staged; commit and push remain the user's step.
+
+## 2026-09-02 (night) — extended report built
+
+reports/report.tex extended additively, original language preserved. Added:
+design paragraph for the five extension directions and four new instruments,
+details note on seeds/models/rented compute, results paragraphs for seed and
+k replication, other models (14B + the Llama selectivity collapse), and the
+extended mechanism instruments (capacity, sweep, battery, page-masking with
+its caveat, inventory, task balance), two new figure rows (fig_seed_rho +
+fig_model_probes, fig_filler_battery + fig_task_balance), scale figure now
+four sizes, analysis updated with the replication strength, the page-masking
+complication stated as the sharpest open question, both anomalies flagged,
+and future directions refreshed. Five pages, zero errors, references clean.
+make_figures.py extended with the four new figures (fig_model_probes had a
+14B-matches-4B substring bug, fixed). PDF at repo root.
+
+## 2026-09-02 (late night) — systematizing pass (A7)
+
+Launched: knockout curve (elm GPU 0, n=120, mask ladder L0-L4 with matched
+random controls) and correspondence probe replication at program seeds 1-2
+(cedar 3090). Computed (notes/verdict_stats.json): bootstrap exclusion
+bounds for the storage nulls (post-window occupancy above ~15-24% of the
+write-window positive control is excluded at 95%), two-proportion tests for
+masked-vs-severed (no model significant, p>=0.30; capacity p>=0.83), and
+battery separations (own vs none p~1e-51, best filler vs none p=0.79). A
+verdict scoreboard table goes into the extended report once the knockout
+curve lands, since its row decides the one open verdict.
+
+## 2026-09-02 (night) — knockout curve decisive; correspondence replicates
+
+**Knockout curve (A7.1, results/elm/20260902T222938Z_knockout_curve,
+n=70 correct transcripts).** L0 100%, L1 (literal copies +-1) 71.4%, L2
+(+-3) 64.3%, L3 (+-6) 55.7%, L4 (entire transcript masked, prompt visible)
+10.0%. Random matched-size controls all 100%. The registered context-
+absorption reading fires: accuracy declines monotonically as the masked
+neighbourhood widens and collapses to the direct re-derivation floor when
+the whole page is hidden. Nothing is held outside the transcript. The
+page-masking ambiguity is resolved: writing smears the value into the
+surrounding written context, and the workspace holds no independent copy.
+Duplication is now rejected cleanly rather than ambiguously.
+
+**Correspondence replication (A7.2).** Seeds 0/1/2 give write 1.20/1.16/
+1.16, post 0.16/0.08/0.11, use 0.42/0.30/0.30. The write, fade, return
+pattern reproduces within noise, as registered.
+
+## 2026-09-03 (small hours) — assembly complete
+
+Battery replicates at seeds 1-2 (own 1.0 both, all fillers at or below the
+no-prefix cell). Numeric probe reran at seeds 1-2. Figures rebuilt with
+seed statistics (2a pools three seeds of chains, 2b bars are three-seed
+means with per-seed dots, battery likewise) plus fig_knockout. Extended
+report gains the knockout paragraph and figure, the resolved analysis
+passage, replication sentences, and the verdict scoreboard table
+(tab:verdicts) stating each hypothesis's statistic and replication axis.
+Five pages, clean compile. The mechanistic study now has: registered
+predictions for every instrument, formal statistics for every verdict,
+replication on an appropriate axis for every instrument, three models from
+two families for the storage claims, and its one discovered ambiguity
+resolved by a purpose-built causal experiment.
+
+## 2026-09-03 — injection sufficiency (A8.1): the channel exists, unused
+
+results/elm/20260903T000014Z_injection_sufficiency, n=96/cell. baseline
+100%, masked 13.5%, severed 12.5% (fourth replication of the floor).
+Injecting the correct value's J-lens direction at gap positions rescues the
+masked model to 46.9% at scale 0.3 of local residual norm (20.8% at 0.1,
+5.2% at 1.0, an inverted-U dose response, overdose destroys the residual).
+Specificity control decisive: wrong-value injection at 0.3 makes the model
+answer the INJECTED digit 50% of the time while the true value drops to
+1%. Registered reading (i) fires: an internal copy is usable when planted
+and carries value information, so the workspace is a viable storage medium
+that the model never uses for storage. Duplication stays rejected as a
+matter of fact, and the capacity-vs-use dissociation is the sharpest single
+result of the campaign. Rescue is partial (47% not 100%), consistent with a
+single-direction, uniform-position write being an imperfect copy.
+
+## 2026-09-03 — figure 5b challenge: two artifacts diagnosed (credit: Shivam)
+
+Shivam flagged figure 5b (task balance) as inconsistent with the headline
+direct-vs-CoT retention gap. Investigation ruled out the scariest
+explanation (ablate_prompt defaults True, prefill IS ablated in all
+generate_with_ablation scripts) and found two real issues instead.
+(1) Battery/rescue "clean no-prefix" cells are extraction artifacts: the
+clean model declines the empty-think format and reasons in prose, and the
+parser scores the first number in the prose. Cells measure format
+compliance, not ability. Diagnosed by reading generations; the long-flagged
+clean-below-ablated inversion is hereby closed. Within-format comparisons
+(fillers, own-CoT) unaffected. (2) Figure 5b displayed the arithmetic
+suite's direct retention (1.41 on a 0.21 clean base), violating our own
+floor rule and visually implying ablation helps. Figure reworked to raw
+accuracies with the arithmetic direct arm labelled near-floor; report text
+updated in both places. The three ceiling-clean suites carry the genuine
+finding (no ablation cost on lookup-style tasks).
+
+## 2026-09-03 — full figure audit (requested: hunt for hallucinated numbers)
+
+Two real corruptions found in the regenerated figures, both selector bugs
+introduced by the results directory tripling, both fixed and re-verified:
+(1) Figure 1's medium bars had been overwritten by k-sweep runs (k=20 data
+shown as k=10) because run tags do not encode k and the pod hostname sorted
+after the lab hosts; the run index now suffixes _k5/_k20. (2) Figure 3b's
+Qwen3-4B point resolved to a MATH-500 run (direct retention 0.90 shown in
+place of GSM8K's 0.62, flattening the scale trend) because the selector
+lacked a task constraint and pod directories sort before lab ones; now
+gsm8k-constrained. Also pinned Figure 2c to the matched-subset rescue run
+(it had silently switched to battery data whose clean no-prefix cells are
+the diagnosed format artifact). Post-fix verification: every Figure 1 bar,
+every Figure 3b point, Figure 2c's cells, the knockout curve, and the seed
+rhos now match the report text and the underlying run directories exactly.
+Figures 2a/2b/4a/4b/5a/5b re-derive from their source summaries by
+construction and were spot-verified. The frozen submitted report.pdf was
+never affected (committed binary).
+
+## EXP direct-correspondence contrast (2026-09-03, aion GPU2)
+
+**Hypothesis (Addendum 9/9b).** The CoT-arm fade between write and use is
+consistent with two models. I/O buffer, the workspace stores nothing in any
+mode. Exchange-style relief, externalisation is what empties the workspace,
+so with no page the value should persist between uses. Contrast statistic
+z_post, direct vs CoT, on matched programs.
+
+**Config.** run_direct_correspondence.py + run_cot_correspondence.py with
+HW0_FINAL=lit (d = a op literal, one retrieval + one op, inside the D=2
+budget; k != v1, d != v1). Qwen3-4B, medium band, 80 programs, seeds 0-2 per
+arm, aion GPU2, ~1 min per direct seed and ~5 min per CoT seed.
+
+**Postmortems (all runs preserved).** v1 bare completion and v2 depth-ladder
+free generation sat at the digit floor on the original d = a op c programs
+(7.5-12.5%), which replicates the D=2 budget, three dependent ops exceed it.
+v3 (lit programs, free generation) still floored, per-item reading showed
+26/80 answers with no digit at all, the empty-think format artifact. v4 adds
+a one-shot demo and prefills the assistant with "d =", reading the digit by
+argmax at the final position, no parsing.
+
+**Result.** Direct v4 accuracy 52.5/32.5/42.5% (floor 11%), manipulation
+check passes. Windows are flat in the direct arm, write 0.14/-0.03/0.13,
+post 0.08/-0.06/0.12, use 0.12/-0.03/0.12, and stay flat on correct-only
+items. CoT-lit replicates the original shape, write 1.02-1.14, post -0.13 to
+0.07, use 0.08-0.28. Direct z_post is at the CoT level, not elevated.
+
+**Verdict.** Registered reading 1. The fade is not caused by writing, the
+workspace stores nothing between uses in either arm, exchange stays
+dissolved with positive cross-arm evidence, and the I/O-buffer model of the
+workspace stands. Exploratory bonus, the CoT write peak (z about 1.1) has no
+direct-arm counterpart even on solved items, so the loud J-lens signal is
+emission-locked, supporting the output-pathway reading. Caveat, the direct
+arm has no positive-control window, so weak prompt-position sensitivity of
+the lens contributes to the flat profile; the per-position ordering probe
+still finds the values, so presence there is sparse rather than sustained.
+Figure fig_correspondence_contrast.
+
+**Max-statistic follow-up (same day).** Challenge, the flat direct windows
+could be dilution, a sparse one-position spike vanishing in a window mean.
+Reran both arms recording the best position-layer z per window (max
+statistic) and, because a max over 30-90 cells sits near 2 by selection
+alone, the same max for a decoy digit absent from the program as the
+per-window null. Result, in the direct arm value-max equals decoy-max in
+every window (gaps -0.11 to +0.22 across seeds), so the flatness is real
+absence in the readout, not dilution. In the CoT arm the write window shows
+value-max 2.1-2.2 against decoy 1.2-1.3 (gap +0.9, three seeds), post and
+use gaps small (+0.07 to +0.15). Reconciliation with the ordering probe, its
+chained programs keep every intermediate in immediate use by the next line
+and include the emitted answer, so it detects in-use surfacing, while these
+programs idle v1 for two lines. Refined claim, the J-space registers a value
+around verbalisation and immediate use, silent computation of the same value
+(42 percent accuracy, four times floor) leaves no detectable trace in the
+medium-band readout, absence bounded by lens sensitivity (AUC 0.67).

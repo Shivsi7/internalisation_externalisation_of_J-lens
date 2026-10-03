@@ -42,7 +42,8 @@ The report is **`report.pdf`** at the repository root; its LaTeX source is
 
 | path | contents |
 |---|---|
-| `report.pdf` | the report (root, per the assignment) |
+| `report.pdf` | the original submitted report (root, per the assignment; unchanged since submission) |
+| `extended_report.pdf` | the report extended with the post-submission campaign (seeds, k-sweep, Qwen3-14B, Llama-3.1-8B, capacity/page-masking/battery/task-balance instruments); source `reports/extended_report.tex` |
 | `reports/report.tex`, `reports/figures/`, `reports/tables/` | LaTeX source, all figures (PDF+PNG), generated tables |
 | `hypotheses.md` | **pre-registration**, committed before any run; post-hoc changes confined to dated append-only addenda (four addenda record every late instrument, correction, and falsified prediction) |
 | `design.md` | experiment design rationale: conditions, controls, metrics, staging |

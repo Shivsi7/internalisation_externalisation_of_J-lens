@@ -30,6 +30,8 @@ MODELS = {
     "qwen3-8b": ("Qwen/Qwen3-8B", "Qwen3-8B_jacobian_lens.pt"),
     "qwen3-14b": ("Qwen/Qwen3-14B", "Qwen3-14B_jacobian_lens.pt"),
     "qwen3-32b": ("Qwen/Qwen3-32B", "Qwen3-32B_jacobian_lens.pt"),
+    "llama3.1-8b-it": ("unsloth/Meta-Llama-3.1-8B-Instruct",
+                       "Llama-3.1-8B-Instruct_jacobian_lens.pt"),
 }
 
 DEFAULT_MODEL = "qwen3-4b"

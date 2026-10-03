@@ -1,0 +1,28 @@
+{
+  "script": "run_injection_sufficiency.py",
+  "argv": [
+    "/home_nfs/shivam/harvard/cs_2881_hw0/harvard-cs2881-hw0/scripts/run_injection_sufficiency.py"
+  ],
+  "model": "Qwen/Qwen3-4B",
+  "band": [
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28
+  ],
+  "scales": [
+    0.1,
+    0.3,
+    1.0
+  ],
+  "wrong_rule": "VALUES[(i+3) % len]",
+  "git_commit": "f84f7910f52181b58ecd1ec1a5ffba9033e3c14c",
+  "host": "elm",
+  "gpu": "NVIDIA RTX 6000 Ada Generation"
+}

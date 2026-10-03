@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/home_nfs/shivam/harvard/cs_2881_hw0/harvard-cs2881-hw0/scripts/run_prefix_rescue.py",
+    "--battery",
+    "--n",
+    "200"
+  ],
+  "n": 170,
+  "seed": 0,
+  "prefix_source": "/home_nfs/shivam/harvard/cs_2881_hw0/harvard-cs2881-hw0/results/cedar/20260902_033018_gsm8k_cot_none_n200_s4/generations.jsonl",
+  "band": [
+    19,
+    28
+  ],
+  "filler_sentence": "Let me think about this problem carefully and step by step. "
+}

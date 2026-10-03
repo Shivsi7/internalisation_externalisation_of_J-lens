@@ -1,0 +1,24 @@
+{
+  "tag": "gsm8k_cot_none_n200_s3",
+  "task": "gsm8k",
+  "accuracy": 0.935,
+  "n_correct": 187,
+  "n": 200,
+  "wilson95": [
+    0.8919799625008207,
+    0.9616240123502404
+  ],
+  "by_group": {
+    "all": {
+      "acc": 0.935,
+      "n": 200
+    }
+  },
+  "mean_new_tokens": 1188.65,
+  "stop_reasons": {
+    "eos": 165,
+    "length": 35
+  },
+  "wall_seconds": 1360.9495697021484,
+  "ablation_stats": null
+}

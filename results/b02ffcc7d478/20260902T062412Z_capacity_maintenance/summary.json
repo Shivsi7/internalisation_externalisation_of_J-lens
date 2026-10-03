@@ -1,0 +1,38 @@
+{
+  "n": 96,
+  "baseline": {
+    "acc": 1.0,
+    "k": 96,
+    "wilson95": [
+      0.9615,
+      1.0
+    ]
+  },
+  "masked_use": {
+    "acc": 0.125,
+    "k": 12,
+    "wilson95": [
+      0.073,
+      0.2059
+    ]
+  },
+  "severed": {
+    "acc": 0.125,
+    "k": 12,
+    "wilson95": [
+      0.073,
+      0.2059
+    ]
+  },
+  "page": {
+    "acc": 1.0,
+    "k": 96,
+    "wilson95": [
+      0.9615,
+      1.0
+    ]
+  },
+  "gap_occ_z_mean": 0.3605,
+  "gap_occ_z_masked_correct": 1.1508,
+  "gap_occ_z_masked_wrong": 0.2476
+}

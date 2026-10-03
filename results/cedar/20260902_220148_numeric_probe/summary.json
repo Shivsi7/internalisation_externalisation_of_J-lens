@@ -1,0 +1,69 @@
+{
+  "batteryA": {
+    "n_prompts": 40,
+    "auc_target_vs_none": {
+      "point": 0.6548958333333333,
+      "ci95": [
+        0.5739583333333333,
+        0.7329166666666667
+      ]
+    },
+    "auc_operand_vs_none (positive control)": {
+      "point": 0.550859375,
+      "ci95": [
+        0.4691015625,
+        0.6354296875
+      ]
+    },
+    "final_pos_auc_target_vs_none": {
+      "point": 0.7036458333333333,
+      "ci95": [
+        0.6297916666666666,
+        0.7709375
+      ]
+    },
+    "final_pos_auc_operand_vs_none (positive control)": {
+      "point": 0.38859375,
+      "ci95": [
+        0.317109375,
+        0.46609375
+      ]
+    },
+    "median_z": {
+      "target": 1.9550714492797852,
+      "operand": 1.8889336585998535,
+      "none": 1.8560525178909302
+    },
+    "median_z_final_pos": {
+      "target": 1.6864004135131836,
+      "operand": 0.9144856929779053,
+      "none": 1.1281086206436157
+    },
+    "ordering_spearman (final pos)": {
+      "rho": 0.3121351619884816,
+      "p": 0.09310502530776171,
+      "n": 30
+    }
+  },
+  "batteryB_leading_digit": {
+    "n_prompts": 20,
+    "auc_targetlead_vs_none": {
+      "point": 0.42786069651741293,
+      "ci95": [
+        0.32545605306799336,
+        0.5288833609729132
+      ]
+    },
+    "median_z": {
+      "target_lead": 1.8560560941696167,
+      "none": 1.9520180225372314
+    }
+  },
+  "gate_pass": true,
+  "band": [
+    15,
+    32
+  ],
+  "seed": 2,
+  "note": "Qwen3 tokenizes numbers digit-by-digit; battery A uses single-digit intermediates (clean single-token readout), battery B scores only the leading digit of 2-digit values."
+}

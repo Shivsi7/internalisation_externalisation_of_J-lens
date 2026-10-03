@@ -42,7 +42,8 @@ LENS_PATH = (REPO / "lenses/qwen3-4b/qwen3-4b/jlens/Salesforce-wikitext/"
              "Qwen3-4B_jacobian_lens.pt")
 N_PROMPTS_A = 40
 N_PROMPTS_B = 20
-SEED = 0
+import os as _os
+SEED = int(_os.environ.get("HW0_SEED", "0"))
 OPS = {"+": lambda x, y: x + y, "-": lambda x, y: x - y, "*": lambda x, y: x * y}
 
 

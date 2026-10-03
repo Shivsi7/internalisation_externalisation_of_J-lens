@@ -1,0 +1,19 @@
+{
+  "script": "run_knockout_curve.py",
+  "argv": [
+    "/home_nfs/shivam/harvard/cs_2881_hw0/harvard-cs2881-hw0/scripts/run_knockout_curve.py"
+  ],
+  "model": "Qwen/Qwen3-4B",
+  "n_programs": 120,
+  "max_new": 512,
+  "levels": {
+    "L1": "values+-1",
+    "L2": "values+-3",
+    "L3": "values+-6",
+    "L4": "all generated before final line",
+    "R1-3": "random matched-size controls"
+  },
+  "git_commit": "f84f7910f52181b58ecd1ec1a5ffba9033e3c14c",
+  "host": "elm",
+  "gpu": "NVIDIA RTX 6000 Ada Generation"
+}

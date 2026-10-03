@@ -79,6 +79,10 @@ def main() -> None:
     ap.add_argument("--n", type=int, default=150)
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--batch-size", type=int, default=16)
+    ap.add_argument("--battery", action="store_true", help=
+                    "A6.5: full-set none/filler/wrong cells plus filler "
+                    "variants (shuffled own tokens, dots); own_cot stays on "
+                    "the correct-CoT subset")
     args = ap.parse_args()
 
     import torch
@@ -92,13 +96,18 @@ def main() -> None:
     src = newest_cot_clean_generations()
     print(f"[rescue] prefix source: {src}")
     items = []
+    items_all = []
     for line in src.read_text().splitlines():
         d = json.loads(line)
         tb = think_block(d["text"])
+        if tb:
+            items_all.append({"question": d["question"], "gold": d["gold"],
+                              "think": tb, "correct": d["correct"]})
         if d["correct"] and tb:
             items.append({"question": d["question"], "gold": d["gold"], "think": tb})
     items = items[: args.n]
-    print(f"[rescue] {len(items)} correct-CoT problems")
+    print(f"[rescue] {len(items)} correct-CoT problems, "
+          f"{len(items_all)} with think blocks total")
 
     tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen3-4B")
     model = AutoModelForCausalLM.from_pretrained(
@@ -133,20 +142,53 @@ def main() -> None:
         think = prefix_think if prefix_think is not None else ""
         return head + "<think>\n" + think + "\n</think>\n\nThe answer is"
 
+    import random as _random
+
+    def shuffled_think(it, i):
+        ids = tokenizer.encode(it["think"], add_special_tokens=False)
+        _random.Random(args.seed * 100003 + i).shuffle(ids)
+        return tokenizer.decode(ids)
+
     wrong = items[1:] + items[:1]  # derangement for wrong_problem
-    conditions: dict[str, list[str]] = {
-        "own_cot": [build_prompt(it["question"], it["think"]) for it in items],
-        "filler": [
-            build_prompt(it["question"],
-                         match_tokens(FILLER_SENTENCE, n_tokens(it["think"])))
-            for it in items
-        ],
-        "wrong_problem": [
-            build_prompt(it["question"], w["think"])
-            for it, w in zip(items, wrong)
-        ],
-        "none": [build_prompt(it["question"], None) for it in items],
-    }
+    if args.battery:
+        full = items_all
+        wrong_f = full[1:] + full[:1]
+        conditions: dict[str, tuple[list, list[str]]] = {
+            "own_cot": (items, [build_prompt(it["question"], it["think"])
+                                for it in items]),
+            "none": (full, [build_prompt(it["question"], None)
+                            for it in full]),
+            "filler": (full, [
+                build_prompt(it["question"],
+                             match_tokens(FILLER_SENTENCE,
+                                          n_tokens(it["think"])))
+                for it in full]),
+            "filler_shuffled": (full, [
+                build_prompt(it["question"], shuffled_think(it, i))
+                for i, it in enumerate(full)]),
+            "filler_dots": (full, [
+                build_prompt(it["question"],
+                             match_tokens(". ", n_tokens(it["think"])))
+                for it in full]),
+            "wrong_problem": (full, [
+                build_prompt(it["question"], w["think"])
+                for it, w in zip(full, wrong_f)]),
+        }
+    else:
+        conditions = {
+            "own_cot": (items, [build_prompt(it["question"], it["think"])
+                                for it in items]),
+            "filler": (items, [
+                build_prompt(it["question"],
+                             match_tokens(FILLER_SENTENCE,
+                                          n_tokens(it["think"])))
+                for it in items]),
+            "wrong_problem": (items, [
+                build_prompt(it["question"], w["think"])
+                for it, w in zip(items, wrong)]),
+            "none": (items, [build_prompt(it["question"], None)
+                             for it in items]),
+        }
 
     band = band_layers(model.config.num_hidden_layers, "medium")
     stamp = dt.datetime.now(dt.timezone.utc).strftime("%Y%m%d_%H%M%S")
@@ -166,7 +208,7 @@ def main() -> None:
             cfg = AblationConfig(band=band, k=10, exclusion_filter=True,
                                  random_seed=args.seed)
             ablator = JSpaceAblator.from_hf(model, lens, cfg)
-        for cond, prompts in conditions.items():
+        for cond, (cond_items, prompts) in conditions.items():
             results = generate_with_ablation(
                 model, tokenizer, prompts, ablator=ablator,
                 max_new_tokens=24, temperature=0.6, top_k=20, top_p=0.95,
@@ -174,7 +216,7 @@ def main() -> None:
             )
             n_ok = 0
             with (out_dir / f"{cond}_{abl_name}.jsonl").open("w") as f:
-                for it, r in zip(items, results):
+                for it, r in zip(cond_items, results):
                     pred = extract_answer("The answer is" + r.text)
                     ok = is_correct(pred, it["gold"])
                     n_ok += ok
@@ -182,12 +224,12 @@ def main() -> None:
                         "question": it["question"], "gold": it["gold"],
                         "pred": pred, "correct": ok, "text": r.text,
                     }) + "\n")
-            lo, hi = wilson_ci(n_ok, len(items))
+            lo, hi = wilson_ci(n_ok, len(cond_items))
             summary[f"{cond}_{abl_name}"] = {
-                "acc": n_ok / len(items), "n": len(items), "wilson95": [lo, hi],
+                "acc": n_ok / len(cond_items), "n": len(cond_items), "wilson95": [lo, hi],
             }
             print(f"[rescue] {cond:>13} / {abl_name:<6} "
-                  f"acc {n_ok}/{len(items)} = {n_ok/len(items):.3f}", flush=True)
+                  f"acc {n_ok}/{len(cond_items)} = {n_ok/len(cond_items):.3f}", flush=True)
 
     summary["wall_seconds"] = time.time() - t0
     (out_dir / "summary.json").write_text(json.dumps(summary, indent=2))

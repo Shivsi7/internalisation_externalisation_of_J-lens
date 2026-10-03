@@ -1,0 +1,33 @@
+{
+  "n": 96,
+  "baseline": {
+    "acc": 1.0
+  },
+  "masked": {
+    "acc": 0.1354
+  },
+  "severed": {
+    "acc": 0.125
+  },
+  "inj_correct_0.1": {
+    "acc": 0.2083
+  },
+  "inj_correct_0.3": {
+    "acc": 0.4688
+  },
+  "inj_correct_1.0": {
+    "acc": 0.0521
+  },
+  "inj_wrong_0.1": {
+    "acc": 0.1146,
+    "tracks_injected": 0.1875
+  },
+  "inj_wrong_0.3": {
+    "acc": 0.0104,
+    "tracks_injected": 0.5
+  },
+  "inj_wrong_1.0": {
+    "acc": 0.0521,
+    "tracks_injected": 0.0833
+  }
+}
